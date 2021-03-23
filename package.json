@@ -1,0 +1,26 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "GraceShopperBE",
+  "main": "index.js",
+  "dependencies": {
+    "node": "^15.10.0",
+    "nodemon": "^2.0.7",
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fredericksoncorey/GraceShopperBE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fredericksoncorey/GraceShopperBE/issues"
+  },
+  "homepage": "https://github.com/Fredericksoncorey/GraceShopperBE#readme"
+}
