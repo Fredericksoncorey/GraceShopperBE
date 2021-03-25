@@ -8,20 +8,19 @@ const server = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
-const cors = require('cors');
-server.use(cors());
+// const cors = require('cors');
+// server.use(cors());
 
-server.use(bodyParser.json());
+// server.use(bodyParser.json());
 
-const apiRouter = require('./api');
-server.use('/api', apiRouter);
+// const apiRouter = require('./api');
+// server.use('/api', apiRouter);
 
 const client = require('./db/client');
-
-
 
 server.listen(PORT, () => {
     console.log('The server is up on port', PORT)
     client.connect(); 
     console.log('the client is connected')
 });
+
