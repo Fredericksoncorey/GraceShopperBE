@@ -19,7 +19,9 @@
   "scripts": {
     "start": "node index.js",
     "seed": "node ./db/seed.js",
-    "test": "test"
+    "test": "test",
+    "seed:dev" : "nodemon ./db/seed.js",
+    "testDB" : "nodemon ./db/testDB.js"
   },
   "repository": {
     "type": "git",
