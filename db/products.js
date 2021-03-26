@@ -47,8 +47,26 @@ async function createProduct({title, artist, genre, releaseDate, description, pr
 
     } 
 
+    const getProductsByArtist = async (artist) => {
+
+      try {
+        const {rows: products} = await client.query(`
+          SELECT *
+          FROM products
+          WHERE artist = $1
+        `, [artist]);
+        console.log(products)
+        return products
+      }catch (error){
+        throw(error)
+      }
+
+
+    }
+
     module.exports = {
         createProduct,
         getProductById,
-        getProductsByGenre
+        getProductsByGenre,
+        getProductsByArtist
       }
