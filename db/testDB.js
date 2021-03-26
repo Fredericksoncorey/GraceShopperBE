@@ -1,5 +1,6 @@
 const {rebuildDB} = require('./seed')
 const {getUser, getUserById, getUserByUsername} = require('./users')
+const {getProductById, getProductsByGenre} = require('./products')
 const client = require('./client')
 const userObj = {username: 'albert', password: 'bertie99'}
  
@@ -10,7 +11,7 @@ const testSuite = async () => {
         await rebuildDB()
         /* .catch(console.error)
         .finally(() => client.end())  */
-        console.log("getUserByUsername('glamgal') is returning",await getUserByUsername("glamgal"))
+        console.log("getProductsByGenre('hardrock') is returning",await getProductsByGenre("hardrock"))
         
     } catch (error) {
         console.error(error)

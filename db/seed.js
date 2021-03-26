@@ -95,8 +95,10 @@ async function createInitialUsers() {
       console.log('Starting to create products...');
   
       const productsToCreate = [
-        { title: 'Greatest Hits', artist: 'Best ever', genre: 'Best Genre', releaseDate: '2021-03-24', description: "top hits 21", price: 105, quantity: 5},
-        {title: 'Greatest Hits2', artist: 'Best ever', genre: 'Best Genre', releaseDate: '2020-03-20', description: "top hits 20", price: 100, quantity: 10},
+         {title: 'Greatest Hits', artist: 'Best ever', genre: 'hardrock', releaseDate: '2021-03-24', description: "top hits 21", price: 105, quantity: 5},
+        {title: 'Greatest Hits2', artist: 'Best ever', genre: 'country', releaseDate: '2020-03-20', description: "top hits 20", price: 134, quantity: 10},
+        {title: 'Greatest Hits3', artist: 'Best ever', genre: 'country', releaseDate: '2012-09-20', description: "top hits 12", price: 100, quantity: 1},
+        {title: 'Greatest Hits4', artist: 'Best ever', genre: 'hardrock', releaseDate: '1993-03-20', description: "top hits 93", price: 124, quantity: 3}
       ]
       const products = await Promise.all(productsToCreate.map(createProduct));
   
