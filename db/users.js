@@ -2,6 +2,7 @@ const client = require('./client.js');
 const bcrypt = require('bcrypt');
 
 async function createUser({username, password, email, isAdmin}) {
+    console.log("ran create user")
     const hashedPass = bcrypt.hashSync(password , 10)
     try {
         //console.log(username)

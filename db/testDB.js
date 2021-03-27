@@ -13,6 +13,8 @@ const testSuite = async () => {
         .finally(() => client.end())  */
         console.log("getProductsByArtist('Best ever') is returning",await getProductsByArtist("Best ever"))
         
+
+        
     } catch (error) {
         console.error(error)
     }   finally {

@@ -5,13 +5,16 @@ const { PORT = 3000 } = process.env
 const express = require('express');
 const server = express();
 
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
-// const cors = require('cors');
-// server.use(cors());
+const cors = require('cors');
+server.use(cors());
 
-// server.use(bodyParser.json());
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
+
+//server.use(bodyParser.json());
 
 // const apiRouter = require('./api');
 // server.use('/api', apiRouter);

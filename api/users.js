@@ -108,7 +108,7 @@ usersRouter.get('/:username/orders', authenticated, async (req, res) => {
     }
 });
 
-userssRouter.patch('/:userId', authenticated, async (req, res, next) => {
+usersRouter.patch('/:userId', authenticated, async (req, res, next) => {
     const { userId } = req.params;
     const { username, address, phone } = req.body;
     const update = { id: userId };
