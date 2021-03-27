@@ -16,6 +16,20 @@ async function createReview({userId, productId, rating, review}){
 
 }
 
+async function getAllReviews() {
+    try {
+      const { rows } = await client.query(`
+        SELECT "userId", "productId", rating, review 
+        FROM reviews;
+      `);
+  
+      return rows;
+    } catch (error) {
+      throw error;
+    }
+}
+
 module.exports = {
-    createReview
+    createReview,
+    getAllReviews
     }

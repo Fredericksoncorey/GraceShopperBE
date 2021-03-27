@@ -16,6 +16,21 @@ async function createShoppingCart({userId}){
 
 }
 
+const updateCart = async ({ quantity }) => {
+    try {
+        const { rows: [cart] } = await client.query(`
+            UPDATE cart
+            SET quantity=$1
+            WHERE id=${id}
+            RETURNING *;
+        `, [quantity]);
+        return cart;
+    } catch (error) {
+        throw error;
+    }
+}
+
 module.exports = {
-    createShoppingCart
+    createShoppingCart,
+    updateCart
     }

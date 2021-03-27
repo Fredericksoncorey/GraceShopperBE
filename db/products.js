@@ -77,11 +77,40 @@ async function createProduct({title, artist, genre, releaseDate, description, pr
       }
     }
  
+    const updateProduct = async ({ id, title,  description, artist, genre, releaseDate, price, quantity }) => {
+      try {
+          const { rows: [product] } = await client.query(`
+              UPDATE products
+              SET title=$1, description=$2, artist=$3, genre=$4, "releaseDate"=$5, price=$6, quantity=$7
+              WHERE id=${id}
+              RETURNING *;
+          `, [title,  description, artist, genre, releaseDate, price, quantity]);
+          return product;
+      } catch (error) {
+          throw error;
+      }
+  }
+
+  const destroyProduct = async id => {
+    try {
+        const { rows: [product] } = await client.query(`
+            DELETE FROM products
+            WHERE id=$1
+            RETURNING *;
+        `, [id]);
+        return product;
+    } catch (error) {
+        throw error;
+    }
+}
+
     module.exports = {
         createProduct,
         getProductById,
         getProductsByGenre,
         getProductsByArtist,
-        getAllProducts
+        getAllProducts,
+        updateProduct,
+        destroyProduct
       }
 

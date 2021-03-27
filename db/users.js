@@ -99,12 +99,40 @@ async function getAllUsers() {
     }
   }
 
+const editProfile = async ({ id, username, address, phone }) => {
+    try {
+        const { rows: [user] } = await client.query(`
+            UPDATE users
+            SET username=$1, address=$2, phone=$3
+            WHERE id=${id}
+            RETURNING *;
+        `, [username, address, phone]);
+        return user;
+    } catch (error) {
+        throw error;
+    }
+}
 
+const getUserByEmail = async (email)=>{
+    try{
+        const {rows: [user]} = await client.query(`
+        SELECT * FROM users
+        WHERE email = $1
+        `, [email])
+
+    return user
+    
+    }catch(error){
+        throw error
+    }
+}
 
 module.exports = {
     createUser,
     getUser,
     getUserById,
     getUserByUsername,
-    getAllUsers
+    getAllUsers,
+    editProfile,
+    getUserByEmail
 }
