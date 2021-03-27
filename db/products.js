@@ -13,9 +13,59 @@ async function createProduct({title, artist, genre, releaseDate, description, pr
     } catch (error) {
     throw error;
     }
-
 }
+    async function getProductById(userId) {
+      try {
+        // first get the user (NOTE: Remember the query returns
+        const {rows: [product]} = await client.query(`
+          SELECT *
+          FROM products
+          WHERE id = $1
+        `, [userId]);
+        
+        return product
+      }catch (error){
+        throw(error)
+      }
+    }    
 
-module.exports = {
-    createProduct
+    const getProductsByGenre = async (genre) => {
+
+      try {
+        const {rows: products} = await client.query(`
+          SELECT *
+          FROM products
+          WHERE genre = $1
+        `, [genre]);
+        console.log(products)
+        return products
+      }catch (error){
+        throw(error)
+      }
+
+    } 
+
+    const getProductsByArtist = async (artist) => {
+
+      try {
+        const {rows: products} = await client.query(`
+          SELECT *
+          FROM products
+          WHERE artist = $1
+        `, [artist]);
+        console.log(products)
+        return products
+      }catch (error){
+        throw(error)
+      }
+
+
     }
+ 
+    module.exports = {
+        createProduct,
+        getProductById,
+        getProductsByGenre,
+        getProductsByArtist
+      }
+
