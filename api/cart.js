@@ -1,7 +1,8 @@
 const express = require('express');
 const cartRouter = express.Router();
 const authenticated = require('./auth');
-const { getProductById, updateProduct , destroyProduct} = require('../db/products');
+const { getProductById, destroyProduct} = require('../db/products');
+const { updateCart} = require('../db/cart');
 
 cartRouter.patch('/:productId', authenticated, async (req, res, next) => {
     const { productId } = req.params;
@@ -14,8 +15,8 @@ cartRouter.patch('/:productId', authenticated, async (req, res, next) => {
     try {
         const { creatorId } = await getProductById(productId);
         if (creatorId === req.user.id) {
-            const updateCart = await updateProduct(update)
-            res.send(updateCart)
+            const updatedCart = await updateCart(update)
+            res.send(updatedCart)
         }
     } catch (error) {
         next(error);

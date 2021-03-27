@@ -3,7 +3,7 @@ const usersRouter = express.Router();
 const jwt = require('jsonwebtoken');
 const { token } = require('morgan');
 const { JWT_SECRET }  = process.env
-const { createUser, getUserByUsername, getUser, getAllUsers, getCartByUser, getOrderByUser, getUserByEmail } = require('../db/users');
+const { createUser, getUserByUsername, getUser, getAllUsers, getCartByUser, getOrdersByUser, getUserByEmail, getUserById, editProfile } = require('../db/users');
 const admin = require('./administrator');
 const authenticated = require('./auth');
 
@@ -99,7 +99,7 @@ usersRouter.get('/:username/orders', authenticated, async (req, res) => {
     try {
       const { username } = req.params;
       const user = await getUserByUsername(username);
-      const order = await getOrderByUser(user);
+      const order = await getOrdersByUser(user);
       res.send(
         order
       );
