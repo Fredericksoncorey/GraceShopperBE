@@ -58,14 +58,30 @@ async function createProduct({title, artist, genre, releaseDate, description, pr
       }catch (error){
         throw(error)
       }
+    }
 
-
+    async function getAllProducts() {
+      try {
+        const { rows: productIds } = await client.query(`
+          SELECT id
+          FROM products;
+        `);
+    
+        const products = await Promise.all(productIds.map(
+          product => getProductById( product.id )
+        ));
+    
+        return products;
+      } catch (error) {
+        throw error;
+      }
     }
  
     module.exports = {
         createProduct,
         getProductById,
         getProductsByGenre,
-        getProductsByArtist
+        getProductsByArtist,
+        getAllProducts
       }
 

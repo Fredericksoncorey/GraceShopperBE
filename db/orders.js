@@ -16,6 +16,39 @@ async function createOrder({userId, productId, quantity}){
 
 }
 
+async function getOrderById(userId) {
+    try {
+      const {rows: [order]} = await client.query(`
+        SELECT *
+        FROM orders
+        WHERE id = $1
+      `, [userId]);
+      
+      return order
+    }catch (error){
+      throw(error)
+    }
+  }  
+
+async function getAllOrders() {
+    try {
+      const { rows: orderIds } = await client.query(`
+        SELECT id
+        FROM orders;
+      `);
+  
+      const orders = await Promise.all(orderIds.map(
+        order => getOrderById( order.id )
+      ));
+  
+      return orders;
+    } catch (error) {
+      throw error;
+    }
+  }
+
 module.exports = {
-    createOrder
+    createOrder,
+    getAllOrders,
+    getOrderById
     }
