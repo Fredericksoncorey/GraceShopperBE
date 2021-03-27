@@ -1,6 +1,8 @@
 const client = require('./client.js');
 const {createUser} = require('./users.js')
 const {createProduct} = require('./products.js')
+const {createOrder} = require('./orders.js')
+const {createReview} = require('./reviews.js')
 
 
 async function dropTables() {
@@ -56,10 +58,10 @@ try {
     
     CREATE TABLE reviews (
         id SERIAL PRIMARY KEY,
-        product INTEGER REFERENCES products(id),
         "userId" INTEGER REFERENCES users(id),
+        "productId" INTEGER REFERENCES products(id),
         review TEXT NOT NULL,
-        UNIQUE (product, "userId")
+        UNIQUE ( "userId", "productId")
     );
     `);
     console.log("Finished building tables!");
@@ -96,7 +98,7 @@ async function createInitialUsers() {
   
       const productsToCreate = [
         { title: 'Greatest Hits', artist: 'Best ever', genre: 'Best Genre', releaseDate: '2021-03-24', description: "top hits 21", price: 105, quantity: 5},
-        {title: 'Greatest Hits2', artist: 'Best ever', genre: 'Best Genre', releaseDate: '2020-03-20', description: "top hits 20", price: 100, quantity: 10},
+        { title: 'Greatest Hits2', artist: 'Best ever', genre: 'Best Genre', releaseDate: '2020-03-20', description: "top hits 20", price: 100, quantity: 10 },
       ]
       const products = await Promise.all(productsToCreate.map(createProduct));
   
@@ -108,15 +110,49 @@ async function createInitialUsers() {
       console.error('Error creating products!');
       throw error;
     }
-  }
+}
 
-//   title varchar(255) NOT NULL,
-//   artist TEXT NOT NULL,
-//   genre TEXT NOT NULL,
-//   "releaseDate" DATE NOT NULL,
-//   description TEXT NOT NULL,
-//   price INTEGER NOT NULL,
-//   quantity INTEGER NOT NULL
+async function createInitialOrders() {
+    try{
+        console.log('Starting to create orders...');
+    
+        const ordersToCreate = [
+            {userId: 2, productId: 1, quantity: 2},
+        ]
+    
+      const orders = await Promise.all(ordersToCreate.map(createOrder));
+  
+      console.log('orders created:');
+      console.log(orders);
+
+      console.log('Finished creating orders!');
+    } catch (error) {
+      console.error('Error creating orders!');
+      throw error;
+    }
+}
+
+async function createInitialReviews() {
+    try{
+        console.log('Starting to create reviews...');
+    
+        const reviewsToCreate = [
+            {userId: 1, productId: 1, review: "Best album ever!"},
+            {userId: 3, productId: 2, review: "the second one is never as good as the first"},
+        ]
+    
+      const reviews = await Promise.all(reviewsToCreate.map(createReview));
+  
+      console.log('reviews created:');
+      console.log(reviews);
+
+    }catch (error) {
+      console.error('Error creating reviews!');
+      throw error;
+      
+}
+}
+
 
 async function rebuildDB() {
 try {
@@ -125,6 +161,8 @@ try {
     await createTables();
     await createInitialUsers();
     await createInitialProducts();
+    await createInitialOrders();
+    await createInitialReviews();
 } catch (error) {
     console.log('Error during rebuildDB')
     throw error;
