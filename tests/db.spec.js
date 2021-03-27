@@ -2,7 +2,7 @@ require('dotenv').config();
 const bcrypt = require('bcrypt');
 const SALT_COUNT = 10;
 
-const { rebuildDB } = require('../db/seedData');
+
 const { 
     createUser,
     getUser,
@@ -20,7 +20,7 @@ const {
 const client = require('../db/client');
 describe('Database', () => {
   beforeAll(async() => {
-    await rebuildDB();
+    //await rebuildDB();
   })
   afterAll(async() => {
     await client.end();
@@ -30,7 +30,9 @@ describe('Database', () => {
     let userCredentials = {username: 'billybob', password: 'bobbybadboy', email: 'billibobjoe@at&t.com', isAdmin: false};
     describe('createUser({ username, password })', () => {
       beforeAll(async () => {
+        console.log('got here')
         userToCreateAndUpdate = await createUser(userCredentials);
+        
         const {rows} = await client.query(`SELECT * FROM users WHERE username = $1`, [userCredentials.username]);
         queriedUser = rows[0];
       })

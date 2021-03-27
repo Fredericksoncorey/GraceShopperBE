@@ -88,6 +88,34 @@ usersRouter.get('/:username/history', authenticated, async (req, res) => {
     } catch (error) {
       next(error)
     }
-  });
+});
+
+usersRouter.patch('/:userId', authenticated, async (req, res, next) => {
+    const { userId } = req.params;
+    const { username, address, phone } = req.body;
+    const update = { id: userId };
+
+    if (username) {
+        update.username = username;
+    }
+
+    if (address) {
+        update.address = address;
+    }
+
+    if (phone) {
+        update.phone = phone;
+    }
+
+    try {
+        const { creatorId } = await getUserById(userId);
+        if (creatorId === req.user.id) {
+            const updateProfile = await editProfile(update)
+            res.send(updateProfile)
+        }
+    } catch (error) {
+        next(error);
+    }
+});
 
 module.exports = usersRouter;
