@@ -100,7 +100,6 @@ async function getAllUsers() {
   }
 
 
-
 module.exports = {
     createUser,
     getUser,

@@ -16,6 +16,29 @@ async function createShoppingCart({userId}){
 
 }
 
+async function getCartByUserId(id) {
+    //console.log('in function')
+    //console.log(id)
+       try {
+           const { rows: [cartId] } = await client.query(`
+           SELECT id
+           FROM cart
+           WHERE "userId"=${id};
+           `);
+           //console.log(cartId)
+           const {rows: cartItems } = await client.query(`
+           SELECT *
+           FROM cart_items
+           WHERE "cartId"= ${cartId.id}
+           `);
+           //console.log(cartItems)
+           return cartItems
+       } catch (error) {
+           throw error;    
+       }
+   }
+
 module.exports = {
-    createShoppingCart
+    createShoppingCart,
+    getCartByUserId
     }
