@@ -1,9 +1,9 @@
 const client = require('./client.js');
-const {createUser} = require('./users.js')
+const {createUser } = require('./users.js')
 const {createProduct} = require('./products.js')
 const {createOrder} = require('./orders.js')
 const {createReview} = require('./reviews.js')
-const {createShoppingCart} = require('./cart.js')
+const {createShoppingCart, getCartByUserId} = require('./cart.js')
 const {createCartItem} = require('./cartItems.js')
 
 
@@ -202,7 +202,9 @@ async function createInitialCartItems() {
 
     //not sure about this seed data
     const cartItemsToCreate = [
-      { cartId: 2, product: 2, quantity: 1, price: 134 },    
+      { cartId: 2, product: 2, quantity: 1}, 
+      { cartId: 1, product: 1, quantity: 3},  
+      { cartId: 1, product: 2, quantity: 4}, 
     ]
 
     const items = await Promise.all(cartItemsToCreate.map(createCartItem));
@@ -216,6 +218,16 @@ async function createInitialCartItems() {
   }
 }
 
+//test function for getCartByUserId
+// async function getCart() {
+//   try {
+//     await getCartByUserId(1);
+//   }catch(error){
+//     throw error;
+//   }
+// }
+//console.log(getCart())
+
 
 async function rebuildDB() {
 try {
@@ -228,11 +240,14 @@ try {
     await createInitialReviews();
     await createInitialShoppingCart();
     await createInitialCartItems();
+    //await getCart();
 } catch (error) {
     console.log('Error during rebuildDB')
     throw error;
     }
 }
+
+
 
 rebuildDB()
 .catch(console.error)

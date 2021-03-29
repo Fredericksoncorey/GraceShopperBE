@@ -117,6 +117,7 @@ const editProfile = async ({ id, username, address, phone }) => {
     }
 }
 
+
 const getUserByEmail = async (email)=>{
     try{
         const {rows: [user]} = await client.query(`
@@ -130,6 +131,7 @@ const getUserByEmail = async (email)=>{
         throw error
     }
 }
+
 
 module.exports = {
     createUser,

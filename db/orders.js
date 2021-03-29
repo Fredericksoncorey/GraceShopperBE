@@ -23,7 +23,6 @@ async function getOrderById(userId) {
         FROM orders
         WHERE id = $1
       `, [userId]);
-      
       return order
     }catch (error){
       throw(error)

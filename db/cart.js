@@ -16,6 +16,7 @@ async function createShoppingCart({userId}){
 
 }
 
+
 const updateCart = async ({ quantity }) => {
     try {
         const { rows: [cart] } = await client.query(`
@@ -30,7 +31,31 @@ const updateCart = async ({ quantity }) => {
     }
 }
 
+
+ async function getCartByUserId(id) {
+    //console.log('in function')
+    //console.log(id)
+       try {
+           const { rows: [cartId] } = await client.query(`
+           SELECT id
+           FROM cart
+           WHERE "userId"=${id};
+           `);
+           //console.log(cartId)
+           const {rows: cartItems } = await client.query(`
+           SELECT *
+           FROM cart_items
+           WHERE "cartId"= ${cartId.id}
+           `);
+           //console.log(cartItems)
+           return cartItems
+       } catch (error) {
+           throw error;    
+       }
+   }
+
 module.exports = {
     createShoppingCart,
+    getCartByUserId,
     updateCart
     }
