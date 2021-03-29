@@ -7,7 +7,7 @@ const { createUser, getUserByUsername, getUser, getAllUsers, getCartByUser, getO
 const admin = require('./administrator');
 const authenticated = require('./auth');
 
-usersRouter.get('/', admin, async (req, res) => {
+usersRouter.get('/', /* admin ,*/ async (req, res, next) => {
     try {
       const users = await getAllUsers();
       res.send(
@@ -19,8 +19,9 @@ usersRouter.get('/', admin, async (req, res) => {
 });
 
 usersRouter.post('/register', async (req, res, next) => {
-  const { username, password, email, isAdmin } = req.body;
-
+  const { username, password, email/* , isAdmin */ } = req.body;
+  console.log("register ran")
+  console.log(req.body)
   try {
     const _user = await getUserByUsername(username);
     const _email = await getUserByEmail(email)
@@ -41,7 +42,11 @@ usersRouter.post('/register', async (req, res, next) => {
         message: 'The password must be at least 8 characters long'
       })
     } else {
-      const user = await createUser({ username, password, email, isAdmin })
+      const user = await createUser({ username, password, email/* , isAdmin */ })
+      delete user.password
+      delete user.email
+        const token = jwt.sign({ user }, "Secret Code"/* change later */, {
+        expiresIn: 86400}) 
       res.send({ user });
     }
 

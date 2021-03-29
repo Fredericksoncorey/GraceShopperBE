@@ -1,7 +1,10 @@
 const client = require('./client.js');
 const bcrypt = require('bcrypt');
 
-async function createUser({username, password, email, isAdmin}) {
+async function createUser({username, password, email, isAdmin }) {
+    if(!isAdmin){
+        isAdmin = false
+    }
     console.log("ran create user")
     const hashedPass = bcrypt.hashSync(password , 10)
     try {
@@ -90,7 +93,7 @@ const getUserByUsername = async (username)=>{
 async function getAllUsers() {
     try {
       const { rows } = await client.query(`
-        SELECT id, username, name, location, active 
+        SELECT *
         FROM users;
       `);
   

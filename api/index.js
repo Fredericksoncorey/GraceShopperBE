@@ -1,6 +1,11 @@
 const express = require('express');
 const apiRouter = express.Router();
 
+apiRouter.use((req, res, next) => {
+    console.log("A request is being made to /api"); 
+    next()
+});
+
 const usersRouter = require('./users');
 apiRouter.use('/users', usersRouter);
 
@@ -15,3 +20,5 @@ apiRouter.use('/reviews', reviewsRouter);
 
 const ordersRouter = require('./orders');
 apiRouter.use('/rorders', ordersRouter);
+
+module.exports = apiRouter
