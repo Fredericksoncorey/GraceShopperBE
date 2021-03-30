@@ -16,9 +16,9 @@ productsRouter.get('/', async (req, res) => {
 });
 
 productsRouter.get('/:genre', async (req, res) => {
-    const { genreId } = req.params;
+    const { genre } = req.params;
     try {
-        const productsByGenre = await getProductsByGenre(genreId)
+        const productsByGenre = await getProductsByGenre(genre)
         res.send(
             productsByGenre
         );
