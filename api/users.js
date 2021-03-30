@@ -45,9 +45,9 @@ usersRouter.post('/register', async (req, res, next) => {
       const user = await createUser({ username, password, email/* , isAdmin */ })
       delete user.password
       delete user.email
-        const token = jwt.sign({ user }, "Secret Code"/* change later */, {
+        const token = jwt.sign( user , "Secret Code"/* change later */, {
         expiresIn: 86400}) 
-      res.send({ user });
+      res.send( {user:{id: user.id, username:user.username}, message: "Thank you for signing up!", token:token });
     }
 
   } catch (error) {
@@ -84,6 +84,7 @@ usersRouter.post('/login', async (req, res, next) => {
 });
 
 usersRouter.get('/me', authenticated, async (req, res) => {
+  console.log('/me ran')
   res.send(req.user);
 });
 

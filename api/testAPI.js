@@ -13,6 +13,15 @@ const testCartDOTget = async () => { //get /cartbyId
         console.error(error)
     }
 }
+const testUsersDOTget = async () => { //get /users
+    try {
+        const response = await fetch(`http://localhost:3000/api/users`)
+        const data = response.json()
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
 
 const testSLASHproducts = async () => { //get /products
     try {
@@ -20,6 +29,24 @@ const testSLASHproducts = async () => { //get /products
     )
         const data = response.json()
         console.log(data)
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+const testUsersSLASHregister = async () => { //get /users
+    try {
+        const response = await fetch(`http://localhost:3000/api/users/register`,
+            {
+                method: "POST",
+                body: JSON.stringify({ username: 'Corey', password: 'BlargityBlargBlarg',  email: 'RainbowSprinkles@tuba.net'}),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+    )
+        const data = response.json()
+        //console.log(data)
         return data
     } catch (error) {
         console.error(error)
@@ -37,18 +64,37 @@ const testSLASHgenre = async () => { //get /products
         console.error(error)
     }
 }
+const testGetUsersSlashme = async () => {
+    try {
+        const response = await fetch(`http://localhost:3000/api/users/me`,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJDb3JleSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MTcwNjQ5MDUsImV4cCI6MTYxNzE1MTMwNX0.yx4soW8cKkVt9OyHIRy7v-LvTHl208-sS-0R1noMJuc'
+                }
+            }
+    )
+        const data = response.json()
+        //console.log(data)
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+
 
 const testAPI = async () => {
     try {
 //you can consolelog tests here.
 //npm run testAPI make sure to control+c and re-run after adjustments 
         //console.log(await testUsersDOTget())
-        // console.log(await testSLASHproducts())
-        console.log(await testSLASHgenre())
-        //console.log(await testUsersSLASHregister())
+        console.log(await testGetUsersSlashme())
     } catch (error) {
         console.error(error)
     }
+    
+
 }
 
 testAPI()
