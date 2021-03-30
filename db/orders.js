@@ -16,13 +16,13 @@ async function createOrder({userId, productId, quantity}){
 
 }
 
-async function getOrderById(userId) {
+async function getOrderById(id) {
     try {
       const {rows: [order]} = await client.query(`
         SELECT *
         FROM orders
         WHERE id = $1
-      `, [userId]);
+      `, [id]);
       return order
     }catch (error){
       throw(error)
@@ -46,8 +46,30 @@ async function getAllOrders() {
     }
   }
 
+  const getOrdersByUserId = async ({userId}) => {
+    
+    try {
+      const {rows} = await client.query(`
+      SELECT *
+      FROM orders
+      Where "userId" = $1;
+      `, [userId])
+      console.log(rows)
+      if(!rows){
+        return false
+      }else{  
+        return orders
+      }
+    } catch (error) {
+      
+    }
+
+
+  } 
+
 module.exports = {
     createOrder,
     getAllOrders,
-    getOrderById
+    getOrderById,
+    getOrdersByUserId
     }

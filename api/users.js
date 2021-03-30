@@ -3,7 +3,7 @@ const usersRouter = express.Router();
 const jwt = require('jsonwebtoken');
 const { token } = require('morgan');
 const { JWT_SECRET }  = process.env
-const { createUser, getUserByUsername, getUser, getAllUsers, getCartByUserId, getOrdersByUser, getUserByEmail, getUserById, editProfile } = require('../db');
+const { createUser, getUserByUsername, getUser, getAllUsers, getCartByUserId, getOrdersByUserId, getUserByEmail, getUserById, editProfile } = require('../db');
 const admin = require('./administrator');
 const authenticated = require('./auth');
 
@@ -103,16 +103,22 @@ usersRouter.get('/:username/cart', authenticated, async (req, res, next) => {
   }
 });
 
-usersRouter.get('/:username/orders', authenticated, async (req, res) => {
+usersRouter.get('/:username/orders', authenticated, async (req, res, next) => {
     try {
       const { username } = req.params;
+      
       const user = await getUserByUsername(username);
-      const order = await getOrdersByUser(user);
+      const order = await getOrdersByUserId(user.id);
+      console.log()
+      if(!order){
+        console.log("no orders")
+        res.send({message: 'No orders by that user'})
+      }
       res.send(
         order
       );
-    } catch (error) {
-      next(error)
+    } catch ({error}) {
+      next({error})
     }
 });
 

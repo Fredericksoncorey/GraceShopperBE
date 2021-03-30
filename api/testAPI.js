@@ -143,12 +143,14 @@ const testGetUsersSLASHUsernameSLASHorders = async () => {
 
 
 
-const testAPI = async () => {
+const testAPI = async (testFunction, string) => {
     try {
 //you can consolelog tests here.
 //npm run testAPI make sure to control+c and re-run after adjustments 
         //console.log(await testUsersDOTget())
-        console.log("RESULTS", await testGetUsersSLASHUsernameSLASHcart())
+
+        console.log(`RESULTS FOR ${string}`) 
+        console.log(await testFunction())
         //console.log("RESULTS", await testUsersPostSLASHLogin())
     } catch (error) {
         console.error(error)
@@ -157,4 +159,4 @@ const testAPI = async () => {
 
 }
 
-testAPI()
+testAPI(testGetUsersSLASHUsernameSLASHorders, 'testGetUsersSLASHUsernameSLASHorders')
