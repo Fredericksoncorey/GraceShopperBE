@@ -3,7 +3,7 @@ const usersRouter = express.Router();
 const jwt = require('jsonwebtoken');
 const { token } = require('morgan');
 const { JWT_SECRET }  = process.env
-const { createUser, getUserByUsername, getUser, getAllUsers, getCartByUser, getOrdersByUser, getUserByEmail, getUserById, editProfile } = require('../db/users');
+const { createUser, getUserByUsername, getUser, getAllUsers, getCartByUserId, getOrdersByUser, getUserByEmail, getUserById, editProfile } = require('../db');
 const admin = require('./administrator');
 const authenticated = require('./auth');
 
@@ -44,10 +44,9 @@ usersRouter.post('/register', async (req, res, next) => {
     } else {
       const user = await createUser({ username, password, email/* , isAdmin */ })
       delete user.password
-      delete user.email
         const token = jwt.sign( user , "Secret Code"/* change later */, {
         expiresIn: 86400}) 
-      res.send( {user:{id: user.id, username:user.username}, message: "Thank you for signing up!", token:token });
+      res.send( {user: {id:user.id, username:user.username}, message: "Thank you for signing up!", token:token });
     }
 
   } catch (error) {
@@ -66,12 +65,16 @@ usersRouter.post('/login', async (req, res, next) => {
 
   try {
     const user = await getUser({ username, password });
+    
     if (user) {
+      const {id, username, email , isAdmin} = user
       const token = jwt.sign({
-        id: user.id,
-        username
-      }, process.env.JWT_SECRET);
-      res.send({ token });
+        id: id,
+        username: username,
+        email: email,
+        isAdmin: isAdmin
+      }, "Secret Code" /* process.env.JWT_SECRET */);
+      res.send({user: {id: user.id, username:user.username}, message: `Welcome ${user.username}`, token:token });
     } else {
       next({
         name: 'IncorrectCredentialsError',
@@ -84,20 +87,19 @@ usersRouter.post('/login', async (req, res, next) => {
 });
 
 usersRouter.get('/me', authenticated, async (req, res) => {
-  console.log('/me ran')
   res.send(req.user);
 });
 
-usersRouter.get('/:username/cart', authenticated, async (req, res) => {
+usersRouter.get('/:username/cart', authenticated, async (req, res, next) => {
   try {
     const { username } = req.params;
     const user = await getUserByUsername(username);
-    const cart = await getCartByUser(user);
+    const cart = await getCartByUserId(user.id);
     res.send(
       cart
     );
-  } catch (error) {
-    next(error)
+  } catch ({ message }) {
+    next({ message });
   }
 });
 

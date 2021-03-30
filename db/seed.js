@@ -253,6 +253,4 @@ rebuildDB()
 .catch(console.error)
 .finally(() => client.end())
 
-module.exports = {
-    rebuildDB
-};
+module.exports = rebuildDB;

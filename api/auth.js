@@ -1,9 +1,16 @@
 const jwt  = require("jsonwebtoken")
 
 const authenticated = async (req, res, next) => {
-    const tokenHeader = req.headers['authorization']
+   if(req.user){
+       console.log("GOT REQ.USER!!!")
+       next()
+   }else{
+    next({ message: 'Please log in to continue' })
+   }
     
-    if(tokenHeader){
+    /* const tokenHeader = req.headers['authorization']
+    console.log(req.headers)
+    if(req.user){
     bearerToken = tokenHeader.split(' ') //one space splits every character
     console.log(bearerToken[1])
     const response =jwt.verify(bearerToken[1], "Secret Code" )
@@ -14,7 +21,7 @@ const authenticated = async (req, res, next) => {
     }else {
         next({ message: 'Please log in to continue' })
     }
-    next();
+    next(); */
 }
 
 module.exports = authenticated;

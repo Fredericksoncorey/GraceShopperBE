@@ -1,5 +1,7 @@
 const express = require('express');
 const apiRouter = express.Router();
+const {getUserById} = require('../db/users') //Why does require('../db') cause rebuildDB to run?
+const jwt = require('jsonwebtoken')
 
 apiRouter.use((req, res, next) => {
     console.log("A request is being made to /api"); 
@@ -9,17 +11,16 @@ apiRouter.use((req, res, next) => {
 apiRouter.use(async (req, res, next) => { // for bearer token
     const prefix = 'Bearer ';
     const auth = req.header('Authorization');
-
     if (!auth) {
         next();
     } else if (auth.startsWith(prefix)) {
         const token = auth.slice(prefix.length);
-
+        
         try {
-            const { id } = jwt.verify(token, JWT_SECRET);
-
+            const { id } = jwt.verify(token, "Secret Code");
             if (id) {
                 req.user = await getUserById(id);
+                console.log(req.user, "line 25 api/index")
                 next();
             }
         } catch ({ name, message }) {

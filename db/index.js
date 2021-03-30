@@ -4,5 +4,6 @@ module.exports = {
     ...require('./orders'),
     ...require('./products'),
     ...require('./reviews'),
-    ...require('./seed') 
+    ...require('./cart')
+    //...require('./seed') 
   }

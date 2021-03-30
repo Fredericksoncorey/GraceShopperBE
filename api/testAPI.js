@@ -1,5 +1,5 @@
 const  fetch  = require("node-fetch");
-
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhbGJlcnQiLCJlbWFpbCI6ImFsYmVydEBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjE3MTI4MDExfQ.sqxuCkUByfS4mgcuIAOB-kmiYov5PnTDJCK4KqJ-VJQ'
 //This is a useful testsuite for API
 //Write functions here and as if they are an API fetch call on front end. 
 //then throw it in the testAPI function.
@@ -64,13 +64,72 @@ const testSLASHgenre = async () => { //get /products
         console.error(error)
     }
 }
-const testGetUsersSlashme = async () => {
+const testGetUsersSLASHMe = async () => {
     try {
         const response = await fetch(`http://localhost:3000/api/users/me`,
             {
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJDb3JleSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MTcwNjQ5MDUsImV4cCI6MTYxNzE1MTMwNX0.yx4soW8cKkVt9OyHIRy7v-LvTHl208-sS-0R1noMJuc'
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhbGJlcnQiLCJlbWFpbCI6ImFsYmVydEBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjE3MTI4MDExfQ.sqxuCkUByfS4mgcuIAOB-kmiYov5PnTDJCK4KqJ-VJQ'
+                }
+            }
+    )
+        const data = response.json()
+        //console.log(data)
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const testUsersPostSLASHLogin = async () => { //get /users
+    try {
+        const response = await fetch(`http://localhost:3000/api/users/login`,
+            {
+                method: "POST",
+                body: JSON.stringify({ username: 'albert', password: 'bertie99'}),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+    )
+        const data = response.json()
+        //console.log(data)
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const testGetUsersSLASHUsernameSLASHcart = async () => {
+    const username = "albert"
+    try {
+
+        const response = await fetch(`http://localhost:3000/api/users/${username}/cart`,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                }
+            }
+    )
+        const data = response.json()
+        //console.log(data)
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const testGetUsersSLASHUsernameSLASHorders = async () => {
+    const username = "albert"
+    try {
+
+        const response = await fetch(`http://localhost:3000/api/users/${username}/orders`,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
                 }
             }
     )
@@ -89,7 +148,8 @@ const testAPI = async () => {
 //you can consolelog tests here.
 //npm run testAPI make sure to control+c and re-run after adjustments 
         //console.log(await testUsersDOTget())
-        console.log(await testGetUsersSlashme())
+        console.log("RESULTS", await testGetUsersSLASHUsernameSLASHcart())
+        //console.log("RESULTS", await testUsersPostSLASHLogin())
     } catch (error) {
         console.error(error)
     }

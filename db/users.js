@@ -65,11 +65,12 @@ const getUserById = async (id) => {
         WHERE id = $1;
         ` , [id]);
         if(!user){
-            throw error("User does not exist by that ID");
+            throw Error("User does not exist by that ID");
         } 
         delete user.password;
         return user; 
     } catch (error) {
+        console.error(error)
         throw (error)
     } 
     

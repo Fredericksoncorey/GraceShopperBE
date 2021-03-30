@@ -1,4 +1,4 @@
-const {rebuildDB} = require('./seed')
+//const rebuildDB = require('./seed')
 const {getUser, getUserById, getUserByUsername} = require('./users')
 const {getProductById, getProductsByGenre, getProductsByArtist} = require('./products')
 const client = require('./client')
