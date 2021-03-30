@@ -13,7 +13,6 @@ async function createShoppingCart({userId}){
     } catch (error) {
     throw error;
     }
-
 }
 
 
