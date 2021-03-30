@@ -6,7 +6,7 @@ apiRouter.use((req, res, next) => {
     next()
 });
 
-apiRouter.use(async (req, res, next) => {
+apiRouter.use(async (req, res, next) => { // for bearer token
     const prefix = 'Bearer ';
     const auth = req.header('Authorization');
 

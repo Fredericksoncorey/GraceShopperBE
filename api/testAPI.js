@@ -3,29 +3,11 @@ const  fetch  = require("node-fetch");
 //This is a useful testsuite for API
 //Write functions here and as if they are an API fetch call on front end. 
 //then throw it in the testAPI function.
-const testUsersDOTget = async () => { //get /users
-    try {
-        const response = await fetch(`http://localhost:3000/api/users`)
-        const data = response.json()
-        return data
-    } catch (error) {
-        console.error(error)
-    }
-}
 
-const testUsersSLASHregister = async () => { //get /users
+const testCartDOTget = async () => { //get /cartbyId
     try {
-        const response = await fetch(`http://localhost:3000/api/users/register`,
-            {
-                method: "POST",
-                body: JSON.stringify({ username: 'Corey', password: 'BlargityBlargBlarg',  email: 'RainbowSprinkles@tuba.net'}),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }
-    )
+        const response = await fetch(`http://localhost:3000/api/cart/1`)
         const data = response.json()
-        console.log(data)
         return data
     } catch (error) {
         console.error(error)
@@ -67,8 +49,6 @@ const testAPI = async () => {
     } catch (error) {
         console.error(error)
     }
-    
-
 }
 
 testAPI()
