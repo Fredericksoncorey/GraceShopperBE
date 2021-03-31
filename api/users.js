@@ -124,25 +124,29 @@ usersRouter.get('/:username/orders', authenticated, async (req, res, next) => {
 
 usersRouter.patch('/:userId', authenticated, async (req, res, next) => {
     const { userId } = req.params;
-    const { username, address, phone } = req.body;
+    /* const { username, address, phone } = req.body; */ const { username, email } = req.body;
     const update = { id: userId };
 
     if (username) {
         update.username = username;
     }
 
-    if (address) {
+    if(email){
+      update.email = email
+    }
+    /* if (address) {
         update.address = address;
-    }
+    } */
 
-    if (phone) {
+    /* if (phone) {
         update.phone = phone;
-    }
+    } */
 
     try {
-        const { creatorId } = await getUserById(userId);
-        if (creatorId === req.user.id) {
+        const { id } = await getUserById(userId);
+        if (id === req.user.id) {
             const updateProfile = await editProfile(update)
+            /* -- */ delete updateProfile.password  /* -- Remove if deciding to edit passwords */
             res.send(updateProfile)
         }
     } catch (error) {

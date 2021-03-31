@@ -90,7 +90,7 @@ const testUsersPostSLASHLogin = async () => { //get /users
                 body: JSON.stringify({ username: 'albert', password: 'bertie99'}),
                 headers: {
                     "Content-Type": "application/json",
-                },
+                }
             }
     )
         const data = response.json()
@@ -121,12 +121,33 @@ const testGetUsersSLASHUsernameSLASHcart = async () => {
     }
 }
 
-const testGetUsersSLASHUsernameSLASHorders = async () => {
+const testGetUsersSLASHUsernameSLASHorders = async (/* username */) => {
     const username = "albert"
     try {
 
         const response = await fetch(`http://localhost:3000/api/users/${username}/orders`,
             {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                }
+            }
+    )
+        const data = response.json()
+        //console.log(data)
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const testUsersPatchSLASHUserId = async (/* userId */) => { //get /users
+    const userId = 1
+    try {
+        const response = await fetch(`http://localhost:3000/api/users/${userId}`,
+            {
+                method: "PATCH",
+                body: JSON.stringify({ username: 'FatherGregory', email: "handmemyboomstick@yahoo.com"}),
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`
@@ -159,4 +180,4 @@ const testAPI = async (testFunction, string) => {
 
 }
 
-testAPI(testGetUsersSLASHUsernameSLASHorders, 'testGetUsersSLASHUsernameSLASHorders')
+testAPI(testUsersPatchSLASHUserId, 'testUsersPatchSLASHUserId')

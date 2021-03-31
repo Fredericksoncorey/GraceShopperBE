@@ -46,7 +46,7 @@ async function getAllOrders() {
     }
   }
 
-  const getOrdersByUserId = async ({userId}) => {
+  const getOrdersByUserId = async (userId) => {
     
     try {
       const {rows} = await client.query(`
@@ -58,6 +58,7 @@ async function getAllOrders() {
       if(!rows){
         return false
       }else{  
+        const [orders] = rows
         return orders
       }
     } catch (error) {

@@ -104,14 +104,14 @@ async function getAllUsers() {
     }
   }
 
-const editProfile = async ({ id, username, address, phone }) => {
+const editProfile = async ({ id, username, email  /* address, phone */ }) => { /* edited to get API to run */
     try {
         const { rows: [user] } = await client.query(`
             UPDATE users
-            SET username=$1, address=$2, phone=$3
+            SET username=$1, email=$2
             WHERE id=${id}
             RETURNING *;
-        `, [username, address, phone]);
+        `, [username, email]);
         return user;
     } catch (error) {
         throw error;
