@@ -28,9 +28,10 @@ productsRouter.get('/:genre', async (req, res) => {
 });
 
 productsRouter.get('/:artist', async (req, res) => {
-    const { artistId } = req.params;
+    const { artist } = req.params;
+    console.log(req.params)
     try {
-        const productsByArtist = await getProductsByArtist(artistId)
+        const productsByArtist = await getProductsByArtist(artist)
         res.send(
             productsByArtist
         );

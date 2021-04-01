@@ -45,8 +45,22 @@ const testSLASHproducts = async () => { //get /products
 }
 
 const testSLASHgenre = async () => { //get /products
+    const genre = 'country'
     try {
-        const response = await fetch(`http://localhost:3000/api/products/genre`
+        const response = await fetch(`http://localhost:3000/api/products/${genre}`
+    )
+        const data = response.json()
+        console.log(data)
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const testSLASHartist = async () => { //get /artist
+    const artist = 'Best ever'
+    try {
+        const response = await fetch(`http://localhost:3000/api/products/${artist}`
     )
         const data = response.json()
         console.log(data)
@@ -62,7 +76,8 @@ const testAPI = async () => {
 //npm run testAPI make sure to control+c and re-run after adjustments 
         //console.log(await testUsersDOTget())
         // console.log(await testSLASHproducts())
-        console.log(await testSLASHgenre())
+        // console.log(await testSLASHgenre())
+        console.log(await testSLASHartist())
         //console.log(await testUsersSLASHregister())
     } catch (error) {
         console.error(error)
