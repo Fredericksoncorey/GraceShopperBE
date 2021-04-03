@@ -16,7 +16,7 @@ async function createReview({userId, productId, rating, review}){
 
 }
 
-async function getReviewsByProductId() {
+/* async function getReviewsByProductId() { - - - - - - - - - - - Might need Later
     try {
       const { rows: [productId] } = await client.query(`
       SELECT id
@@ -32,9 +32,9 @@ async function getReviewsByProductId() {
     } catch (error) {
       throw error;
     }
-}
+}*/
 
 module.exports = {
     createReview,
     getReviewsByProductId
-    }
+    } 

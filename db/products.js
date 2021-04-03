@@ -60,7 +60,7 @@ async function createProduct({title, artist, genre, releaseDate, description, pr
       }
     }
 
-    async function getAllProducts() {
+    async function getAllProducts() { 
       try {
         const { rows: productIds } = await client.query(`
           SELECT id

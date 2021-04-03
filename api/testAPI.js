@@ -61,17 +61,6 @@ const testUsersSLASHregister = async () => { //get /users
     }
 }
 
-const testSLASHgenre = async () => { //get /products
-    try {
-        const response = await fetch(`http://localhost:3000/api/products/genre`
-    )
-        const data = response.json()
-        console.log(data)
-        return data
-    } catch (error) {
-        console.error(error)
-    }
-}
 const testGetUsersSLASHMe = async () => {
     try {
         const response = await fetch(`http://localhost:3000/api/users/me`,
@@ -90,12 +79,12 @@ const testGetUsersSLASHMe = async () => {
     }
 }
 
-const testUsersPostSLASHLogin = async () => { //get /users
+const testUsersPostSLASHLogin = async (username, password) => { //get /users
     try {
         const response = await fetch(`http://localhost:3000/api/users/login`,
             {
                 method: "POST",
-                body: JSON.stringify({ username: 'albert', password: 'bertie99'}),
+                body: JSON.stringify({ username: username, password: password }),
                 headers: {
                     "Content-Type": "application/json",
                 }
@@ -109,10 +98,10 @@ const testUsersPostSLASHLogin = async () => { //get /users
     }
 
 
-const testSLASHgenre = async (genre) => { //get /products
-    
+const testProductsSLASHgenre = async (genre) => { //get /products
+    const genreParam = genre.replaceAll(" ", "%20")
     try {
-        const response = await fetch(`http://localhost:3000/api/products/genre/${genre}`
+        const response = await fetch(`http://localhost:3000/api/products/genre/${genreParam}`
     )
         const data = response.json()
         //console.log(data)
@@ -160,12 +149,11 @@ const testGetUsersSLASHUsernameSLASHorders = async (/* username */) => {
             console.error(error)
         }
     }
-        const data = response.json()
         //console.log(data)
-const testSLASHartist = async () => { //get /artist
-    const artist = 'Best ever'
+const testProductsSLASHartist = async (artist) => { //get /artist
+    const artistParam = artist.replaceAll(" ", "%20")
     try {
-        const response = await fetch(`http://localhost:3000/api/products/${artist}`
+        const response = await fetch(`http://localhost:3000/api/products/artist/${artistParam}`
     )
         const data = response.json()
         console.log(data)
@@ -196,6 +184,19 @@ const testUsersPatchSLASHUserId = async (/* userId */) => { //get /users
     }
 }
 
+const testproductsSLASHReview = async (review) => { //get /artist
+    const artistParam = artist.replaceAll(" ", "%20")
+    try {
+        const response = await fetch(`http://localhost:3000/api/products/artist/${artistParam}`
+    )
+        const data = response.json()
+        console.log(data)
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 
 
 const testAPI = async (testFunction, string) => {
@@ -205,7 +206,7 @@ const testAPI = async (testFunction, string) => {
         //console.log(await testUsersDOTget())
 
         console.log(`RESULTS FOR ${string}`) 
-        console.log(await testFunction("country"))
+        console.log(await testFunction('glamgal', 'glamgal123'))
         //console.log("RESULTS", await testUsersPostSLASHLogin())
         // console.log(await testSLASHproducts())
         // console.log(await testSLASHgenre())
@@ -218,4 +219,4 @@ const testAPI = async (testFunction, string) => {
 
 }
 
-testAPI(testSLASHgenre, 'testSLASHgenre')
+testAPI(testUsersPostSLASHLogin, 'testUsersPostSLASHLogin')

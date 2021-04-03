@@ -41,7 +41,7 @@ productsRouter.get('/artist/:artist', async (req, res) => {
     }
 });
 
-productsRouter.get('/:reviews', async (req, res) => {
+/* productsRouter.get('/reviews/:reviews', async (req, res) => { -----------------Probably won't need.
     const { productId } = req.params;
     try {
         const product = await getProductById(productId)
@@ -52,7 +52,7 @@ productsRouter.get('/:reviews', async (req, res) => {
     } catch (error) {
         next(error);
     }
-});
+}); */
 
 productsRouter.post('/', admin, async (req, res, next) => {
     const { title, artist, genre, releaseDate, description, price, quantity} = req.body;
