@@ -27,6 +27,7 @@ async function createUser({username, password, email, isAdmin }) {
 }
 
 const getUser = async ({username, password}) => {
+
     try {
         const {rows} = await client.query(`
          SELECT *
