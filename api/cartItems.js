@@ -1,16 +1,16 @@
 const express = require('express');
-const cartRouter = express.Router();
+const cartItemsRouter = express.Router();
 const authenticated = require('./auth');
 const { deleteCartItem } = require('../db');
 
-cartRouter.delete('/:productId', authenticated, async (req, res, next) => {
+cartItemsRouter.delete('/:productId', authenticated, async (req, res, next) => {
     try {
-        const _product = await getProductById(req.params.productId);
-        if (_product.creatorId === req.user.id) {
-            const deleteProduct = await destroyProduct(_product.id);
-            res.send(deleteProduct);
-        }
+        const _product = await deleteCartItem(req.params.productId);
+        
+        res.send(_product)
     } catch (error) {
         next(error);
     }
 });
+
+module.exports = cartItemsRouter
