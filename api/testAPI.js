@@ -70,6 +70,7 @@ const testSLASHartist = async () => { //get /artist
     }
 }
 
+
 const testAPI = async () => {
     try {
 //you can consolelog tests here.
@@ -77,7 +78,7 @@ const testAPI = async () => {
         //console.log(await testUsersDOTget())
         // console.log(await testSLASHproducts())
         // console.log(await testSLASHgenre())
-        console.log(await testSLASHartist())
+        // console.log(await testSLASHartist())
         //console.log(await testUsersSLASHregister())
     } catch (error) {
         console.error(error)
