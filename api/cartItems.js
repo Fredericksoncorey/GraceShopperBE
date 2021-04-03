@@ -14,3 +14,5 @@ cartRouter.delete('/:productId', authenticated, async (req, res, next) => {
         next(error);
     }
 });
+
+module.exports = cartRouter
