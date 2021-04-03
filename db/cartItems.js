@@ -13,9 +13,23 @@ async function createCartItem({cartId, product, quantity}){
     } catch (error) {
     throw error;
     }
+}
 
+async function deleteCartItem({id}) {
+    console.log(id)
+    try {
+        const {rows: [item] } = await client.query(`
+        DELETE FROM cart_items
+        WHERE id=$1
+        RETURNING *;
+        `);
+    return item 
+    } catch (error) {
+        throw error;
+    }
 }
 
 module.exports = {
-    createCartItem
+    createCartItem,
+    deleteCartItem
     }

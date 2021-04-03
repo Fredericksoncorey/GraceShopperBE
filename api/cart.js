@@ -34,16 +34,6 @@ cartRouter.patch('/:productId', authenticated, async (req, res, next) => {
     }
 });
 
-cartRouter.delete('/:productId', authenticated, async (req, res, next) => {
-    try {
-        const _product = await getProductById(req.params.productId);
-        if (_product.creatorId === req.user.id) {
-            const deleteProduct = await destroyProduct(_product.id);
-            res.send(deleteProduct);
-        }
-    } catch (error) {
-        next(error);
-    }
-});
+
 
 module.exports = cartRouter;
