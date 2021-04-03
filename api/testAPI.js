@@ -7,6 +7,8 @@ const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJh
 const testCartDOTdelete = async () => {
     try {
         const response = await fetch(`http://localhost:3000/api/cart/`)
+    }catch (error) {
+        console.error(error)
     }
 }
 
