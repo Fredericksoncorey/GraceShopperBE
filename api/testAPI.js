@@ -101,7 +101,20 @@ const testUsersPostSLASHLogin = async () => { //get /users
                 headers: {
                     "Content-Type": "application/json",
                 }
-            }
+            })
+        const data = response.json()
+            //console.log(data)
+            return data
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+
+const testSLASHgenre = async () => { //get /products
+    const genre = 'country'
+    try {
+        const response = await fetch(`http://localhost:3000/api/products/${genre}`
     )
         const data = response.json()
         //console.log(data)
@@ -141,10 +154,23 @@ const testGetUsersSLASHUsernameSLASHorders = async (/* username */) => {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`
                 }
-            }
-    )
+            })
+            const data = response.json()
+            console.log(data)
+            return data
+        } catch (error) {
+            console.error(error)
+        }
+    }
         const data = response.json()
         //console.log(data)
+const testSLASHartist = async () => { //get /artist
+    const artist = 'Best ever'
+    try {
+        const response = await fetch(`http://localhost:3000/api/products/${artist}`
+    )
+        const data = response.json()
+        console.log(data)
         return data
     } catch (error) {
         console.error(error)
@@ -183,6 +209,10 @@ const testAPI = async (testFunction, string) => {
         console.log(`RESULTS FOR ${string}`) 
         console.log(await testFunction())
         //console.log("RESULTS", await testUsersPostSLASHLogin())
+        // console.log(await testSLASHproducts())
+        // console.log(await testSLASHgenre())
+        // console.log(await testSLASHartist())
+        //console.log(await testUsersSLASHregister())
     } catch (error) {
         console.error(error)
     }

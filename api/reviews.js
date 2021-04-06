@@ -1,14 +1,15 @@
 const express = require('express');
 const reviewsRouter = express.Router();
-const { getAllReviews } = require('../db/reviews');
+const { createReview } = require('../db/reviews');
+const authenticated = require('./auth');
 
-reviewsRouter.get('/', async (req, res) => {
+
+reviewsRouter.post('/', authenticated, async (req, res, next) => {
+    const { rating, review} = req.body;
     try {
-        const reviews = await getAllReviews();
-
-        res.send(
-            reviews
-        );
+        const newReview = { rating, review};
+        const reviews = await createReview(newReview);
+        res.send(reviews);
     } catch (error) {
         next(error);
     }
