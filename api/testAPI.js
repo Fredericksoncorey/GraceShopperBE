@@ -201,7 +201,7 @@ const testproductsSLASHReview = async (review) => { //get /artist
 
 const testProductsPostSLASH = async () => { 
     try {
-        const response = await fetch(`http://localhost:3000/api/products}`,
+        const response = await fetch(`http://localhost:3000/api/products`,
             {
                 method: "POST",
                 body: JSON.stringify({ 
@@ -228,6 +228,53 @@ const testProductsPostSLASH = async () => {
     }
 }
 
+const testProductsDeleteSLASHProductId = async (productId) => { 
+    try {
+        const response = await fetch(`http://localhost:3000/api/products/${productId}`,
+            {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                }
+            }
+    )
+        const data = response.json()
+        //console.log(data)
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const testProductsPatchSLASH = async (productId) => { 
+    try {
+        const response = await fetch(`http://localhost:3000/api/products/update/${productId}`,
+            {
+                method: "PATCH",
+                body: JSON.stringify({ 
+                    title: "The Open Door", 
+                    imageLink: "https://upload.wikimedia.org/wikipedia/en/a/a8/Razorsedge.jpg",  
+                    artist: "Evanescence", 
+                    //genre: "Hard Rock",
+                    releaseDate: "09/10/2002",
+                    //description: "Songs listed, etc.",
+                    price: 20.00,
+                    quantity: 16
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                }
+            }
+    )
+        const data = response.json()
+        //console.log(data)
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
 
 
 const testAPI = async (testFunction, string) => {
@@ -237,7 +284,7 @@ const testAPI = async (testFunction, string) => {
         //console.log(await testUsersDOTget())
 
         console.log(`RESULTS FOR ${string}`) 
-        console.log(await testFunction())
+        console.log(await testFunction(5))
         //console.log("RESULTS", await testUsersPostSLASHLogin())
         // console.log(await testSLASHproducts())
         // console.log(await testSLASHgenre())
@@ -250,5 +297,5 @@ const testAPI = async (testFunction, string) => {
 
 }
 
-testAPI(testProductsPostSLASH, 'testProductsPostSLASH')
+testAPI(testProductsDeleteSLASHProductId, 'testProductsDeleteSLASHProductId')
 //testAPI(testCartItemDOTdelete, 'testCartItemDOTdelete')
