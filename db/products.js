@@ -1,13 +1,14 @@
 const client = require('./client.js');
+const {getReviewsByProductId} = require('./db');
 
-async function createProduct({title, artist, genre, releaseDate, description, price, quantity}){
+async function createProduct({title, imageLink, artist, genre, releaseDate, description, price, quantity}){
     //console.log(id)
     try {
     const { rows: [ product ] } = await client.query(`
-        INSERT INTO products(title, artist, genre, "releaseDate", description, price, quantity) 
-        VALUES($1, $2, $3, $4, $5, $6, $7)
+        INSERT INTO products(title, "imageLink", artist, genre, "releaseDate", description, price, quantity) 
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8)
         RETURNING *;
-    `, [title, artist, genre, releaseDate, description, price, quantity]);
+    `, [title, imageLink, artist, genre, releaseDate, description, price, quantity]);
     //console.log(id)
     return product
     } catch (error) {
@@ -60,18 +61,22 @@ async function createProduct({title, artist, genre, releaseDate, description, pr
       }
     }
 
-    async function getAllProducts() { 
-      try {
-        const { rows: productIds } = await client.query(`
-          SELECT id
+    async function getAllProductsWithReviews() {
+      try { //could this just be select * from products vice id?
+        const { rows: products } = await client.query(`
+          SELECT *
           FROM products;
         `);
     
-        const products = await Promise.all(productIds.map(
-          product => getProductById( product.id )
-        ));
-    
-        return products;
+        // const products = await Promise.all(productIds.map(
+        //   product => getProductById( product.id ) //Should this just be (product) without the .id?
+        // ));
+        
+        const productsAndReviews = await Promise.all(products.map(
+          product => product.reviews = getReviewsByProductId(product.id)
+        ))
+  
+        return productsAndReviews;
       } catch (error) {
         throw error;
       }
@@ -109,7 +114,7 @@ async function createProduct({title, artist, genre, releaseDate, description, pr
         getProductById,
         getProductsByGenre,
         getProductsByArtist,
-        getAllProducts,
+        getAllProductsWithReviews,
         updateProduct,
         destroyProduct
       }
