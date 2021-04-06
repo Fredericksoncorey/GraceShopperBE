@@ -82,20 +82,28 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
       }
     }
  
-    const updateProduct = async ({ id, title,  description, artist, genre, releaseDate, price, quantity }) => {
+    const updateProduct = async (id, fields = {} ) => {
+      const setString = Object.keys(fields).map((key, index) => 
+      `"${ key }"=$${ index + 1 }`).join(', ');
+      
+      if (setString.length === 0) {
+        return;
+      }
+      
       try {
           const { rows: [product] } = await client.query(`
               UPDATE products
-              SET title=$1, description=$2, artist=$3, genre=$4, "releaseDate"=$5, price=$6, quantity=$7
+              SET ${setString}
               WHERE id=${id}
               RETURNING *;
-          `, [title,  description, artist, genre, releaseDate, price, quantity]);
+          `, Object.values(fields));
           if(!product){throw Error({message: "No product by that ID was found"})}
           return product;
       } catch (error) {
           throw error;
       }
-  }
+    }
+    
 
   const destroyProduct = async id => {
     try {
@@ -104,9 +112,10 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
             WHERE id=$1
             RETURNING *;
         `, [id]);
+        if(!product){return}
         return product;
     } catch (error) {
-        throw error;
+        throw({message :error.message});
     }
 }
 

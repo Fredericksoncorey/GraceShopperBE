@@ -55,7 +55,7 @@ productsRouter.get('/artist/:artist', async (req, res) => {
 }); */
 
 productsRouter.post('/', admin, async (req, res, next) => {
-    const { title, artist, genre, releaseDate, description, price, quantity} = req.body;
+    const { title, imageLink, artist, genre, releaseDate, description, price, quantity} = req.body;
     try {
         const newProduct = { title, imageLink, artist, genre, releaseDate, description, price, quantity};
         const products = await createProduct(newProduct);
@@ -71,7 +71,7 @@ productsRouter.patch('/update/:productId', admin, async (req, res, next) => {
     if(!title && !imageLink && !artist && !genre && !releaseDate && !description && !price && !quantity ){
         res.send({message: "Error: Something went wrong! No update Data Received"})
     }
-    const update = { id: productId };
+    const update = {};
 
     if (description) {
         update.description = description;
@@ -99,7 +99,7 @@ productsRouter.patch('/update/:productId', admin, async (req, res, next) => {
     } 
 
     try {
-            const updatedProduct = await updateProduct(update)
+            const updatedProduct = await updateProduct(productId, update)
             res.send(updatedProduct)
         
     } catch (error) {
@@ -108,12 +108,17 @@ productsRouter.patch('/update/:productId', admin, async (req, res, next) => {
 });
 
 productsRouter.delete('/:productId', admin, async (req, res, next) => {
+    const {productId} = req.params
     try {
-        const _product = await getProductById(req.params.productId);
-        if (_product.creatorId === req.user.id) {
-            const deleteProduct = await destroyProduct(_product.id);
-            res.send(deleteProduct);
+        //const productToDelete = await getProductById(productId);
+        const deletedProduct = await destroyProduct(productId);
+        if(!deletedProduct){
+            res.send(
+            {error: "PostNotFoundError",
+            message: "Product by that ID does not exist"}
+            )
         }
+        res.send(deletedProduct);
     } catch (error) {
         next(error);
     }
