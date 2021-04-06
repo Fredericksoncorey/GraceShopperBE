@@ -4,10 +4,12 @@ const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJh
 //Write functions here and as if they are an API fetch call on front end. 
 //then throw it in the testAPI function.
 
-const testCartDOTdelete = async () => {
+const testCartItemDOTdelete = async () => {
     try {
-        const response = await fetch(`http://localhost:3000/api/cart/`)
-    }catch (error) {
+        const response = await fetch(`http://localhost:3000/api/cart/2`)
+        const data = response.json()
+        return data
+    } catch (error) {
         console.error(error)
     }
 }
@@ -219,3 +221,4 @@ const testAPI = async (testFunction, string) => {
 }
 
 testAPI(testSLASHgenre, 'testSLASHgenre')
+//testAPI(testCartItemDOTdelete, 'testCartItemDOTdelete')
