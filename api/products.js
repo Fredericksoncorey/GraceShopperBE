@@ -16,7 +16,7 @@ productsRouter.get('/', async (req, res) => {
     }
 });
 
-productsRouter.get('/:genre', async (req, res) => {
+productsRouter.get('/genre/:genre', async (req, res) => {
     const { genre } = req.params;
     try {
         const productsByGenre = await getProductsByGenre(genre)
@@ -28,7 +28,7 @@ productsRouter.get('/:genre', async (req, res) => {
     }
 });
 
-productsRouter.get('/:artist', async (req, res) => {
+productsRouter.get('/artist/:artist', async (req, res) => {
     const { artist } = req.params;
     console.log(req.params)
     try {

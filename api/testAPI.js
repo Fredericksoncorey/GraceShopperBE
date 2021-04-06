@@ -121,10 +121,10 @@ const testUsersPostSLASHLogin = async () => { //get /users
     }
 
 
-const testSLASHgenre = async () => { //get /products
-    const genre = 'country'
+const testSLASHgenre = async (genre) => { //get /products
+    
     try {
-        const response = await fetch(`http://localhost:3000/api/products/${genre}`
+        const response = await fetch(`http://localhost:3000/api/products/genre/${genre}`
     )
         const data = response.json()
         //console.log(data)
@@ -217,7 +217,7 @@ const testAPI = async (testFunction, string) => {
         //console.log(await testUsersDOTget())
 
         console.log(`RESULTS FOR ${string}`) 
-        console.log(await testFunction())
+        console.log(await testFunction("country"))
         //console.log("RESULTS", await testUsersPostSLASHLogin())
         // console.log(await testSLASHproducts())
         // console.log(await testSLASHgenre())
