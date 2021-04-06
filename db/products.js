@@ -1,5 +1,5 @@
 const client = require('./client.js');
-const {getReviewsByProductId} = require('./db');
+const {getReviewsByProductId} = require('./reviews');
 
 async function createProduct({title, imageLink, artist, genre, releaseDate, description, price, quantity}){
     //console.log(id)
@@ -90,6 +90,7 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
               WHERE id=${id}
               RETURNING *;
           `, [title,  description, artist, genre, releaseDate, price, quantity]);
+          if(!product){throw Error({message: "No product by that ID was found"})}
           return product;
       } catch (error) {
           throw error;

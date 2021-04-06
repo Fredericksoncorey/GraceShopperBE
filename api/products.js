@@ -57,24 +57,27 @@ productsRouter.get('/artist/:artist', async (req, res) => {
 productsRouter.post('/', admin, async (req, res, next) => {
     const { title, artist, genre, releaseDate, description, price, quantity} = req.body;
     try {
-        const newProduct = { title, artist, genre, releaseDate, description, price, quantity};
+        const newProduct = { title, imageLink, artist, genre, releaseDate, description, price, quantity};
         const products = await createProduct(newProduct);
-        res.send(products);
+        res.send(products); // ------------------I was Working HERE!!!
     } catch (error) {
         next(error);
     }
 });
 
-productsRouter.patch('/:productId', admin, async (req, res, next) => {
+productsRouter.patch('/update/:productId', admin, async (req, res, next) => {
     const { productId } = req.params;
-    const { description, name, genre, artist, price } = req.body;
+    const { title, imageLink, artist, genre, releaseDate, description, price, quantity } = req.body;
+    if(!title && !imageLink && !artist && !genre && !releaseDate && !description && !price && !quantity ){
+        res.send({message: "Error: Something went wrong! No update Data Received"})
+    }
     const update = { id: productId };
 
     if (description) {
         update.description = description;
     }
-    if (name) {
-        update.name = name;
+    if (title) {
+        update.title = title;
     }
     if (genre) {
         update.genre = genre;
@@ -85,13 +88,20 @@ productsRouter.patch('/:productId', admin, async (req, res, next) => {
     if (price) {
         update.price = price;
     }
+    if (imageLink) {
+        update.imageLink = imageLink;
+    }
+    if (releaseDate) {
+        update.releaseDate = releaseDate;
+    }
+    if (quantity) {
+        update.releaseDate = releaseDate;
+    } 
 
     try {
-        const { creatorId } = await getProductById(productId);
-        if (creatorId === req.user.id) {
-            const updatedProject = await updateProduct(update)
-            res.send(updatedProject)
-        }
+            const updatedProduct = await updateProduct(update)
+            res.send(updatedProduct)
+        
     } catch (error) {
         next(error);
     }

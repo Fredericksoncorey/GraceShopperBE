@@ -1,5 +1,5 @@
 const  fetch  = require("node-fetch");
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhbGJlcnQiLCJlbWFpbCI6ImFsYmVydEBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjE3MTI4MDExfQ.sqxuCkUByfS4mgcuIAOB-kmiYov5PnTDJCK4KqJ-VJQ'
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJnbGFtZ2FsIiwiZW1haWwiOiJnbGFtZ2FsQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYxNzY3Mzk2OH0.hgRsJ7kqChS_QxSmHH9EY83eyHEUKwBUBO6eEZ-pcu4"
 //This is a useful testsuite for API
 //Write functions here and as if they are an API fetch call on front end. 
 //then throw it in the testAPI function.
@@ -199,6 +199,35 @@ const testproductsSLASHReview = async (review) => { //get /artist
     }
 }
 
+const testProductsPostSLASH = async () => { 
+    try {
+        const response = await fetch(`http://localhost:3000/api/products}`,
+            {
+                method: "POST",
+                body: JSON.stringify({ 
+                    title: "The Razors Edge", 
+                    imageLink: "https://upload.wikimedia.org/wikipedia/en/a/a8/Razorsedge.jpg",  
+                    artist: "AC/DC", 
+                    genre: "Hard Rock",
+                    releaseDate: "09/10/1990",
+                    description: "Songs listed, etc.",
+                    price: 12.00,
+                    quantity: 13
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                }
+            }
+    )
+        const data = response.json()
+        //console.log(data)
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 
 
 const testAPI = async (testFunction, string) => {
@@ -208,7 +237,7 @@ const testAPI = async (testFunction, string) => {
         //console.log(await testUsersDOTget())
 
         console.log(`RESULTS FOR ${string}`) 
-        console.log(await testFunction('glamgal', 'glamgal123'))
+        console.log(await testFunction())
         //console.log("RESULTS", await testUsersPostSLASHLogin())
         // console.log(await testSLASHproducts())
         // console.log(await testSLASHgenre())
@@ -221,5 +250,5 @@ const testAPI = async (testFunction, string) => {
 
 }
 
-testAPI(testSLASHgenre, 'testSLASHgenre')
+testAPI(testProductsPostSLASH, 'testProductsPostSLASH')
 //testAPI(testCartItemDOTdelete, 'testCartItemDOTdelete')
