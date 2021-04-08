@@ -1,5 +1,5 @@
 const client = require('./client.js');
-const {getReviewsByProductId} = require('./db');
+const {getReviewsByProductId} = require('./reviews');
 
 async function createProduct({title, imageLink, artist, genre, releaseDate, description, price, quantity}){
     //console.log(id)
@@ -66,17 +66,24 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
         const { rows: products } = await client.query(`
           SELECT *
           FROM products
-          JOIN reviews ON products.id=reviews."productId"
+
         `);
-    
+
+        //JOIN reviews ON products.id=reviews."productId"
         // const products = await Promise.all(productIds.map(
         //   product => getProductById( product.id ) //Should this just be (product) without the .id?
         // ));
-        
-        // const productsAndReviews = await Promise.all(products.map(
-        //   product => product.reviews = getReviewsByProductId(product.id)
-        // ))
-  
+          console.log(products)
+          products.forEach(
+          async (product) => {
+            try{
+            return product.reviews = await getReviewsByProductId(product.id)
+            
+            }catch (error){
+              throw error;
+            }})
+          
+        //console.log(productsAndReviews)
         return products;
       } catch (error) {
         throw error;

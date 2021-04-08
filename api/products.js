@@ -4,7 +4,7 @@ const { getProductsByArtist, getAllProductsWithReviews, getProductsByGenre, crea
 const { getReviewsByProductId } = require('../db/reviews');
 const admin = require('./administrator');
 
-productsRouter.get('/', async (req, res) => {
+productsRouter.get('/', async (req, res, next) => {
     try {
         const products = await getAllProductsWithReviews();
 
