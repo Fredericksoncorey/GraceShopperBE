@@ -16,19 +16,20 @@ async function createReview({userId, productId, rating, review}){
 
 }
 
-async function getReviewsByProductId(id) {
+async function getReviewsByProductId(productId) {
     try {
       //do we need this one? or can we pass a product id in and match it to productId in reviews table below?
-      const { rows: [productId] } = await client.query(`
-      SELECT id
-      FROM products
-      WHERE "productId"=${id};
-      `);
+      // const { rows: [productId] } = await client.query(`
+      // SELECT id
+      // FROM products
+      // WHERE "productId"=${id};
+      // `);
       const {rows: reviews } = await client.query(`
       SELECT *
       FROM reviews
-      WHERE "productId"= ${productId.id}
+      WHERE "productId"= ${productId}
       `);
+      console.log(reviews)
       return reviews
     } catch (error) {
       throw error;

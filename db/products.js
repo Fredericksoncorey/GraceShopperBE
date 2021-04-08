@@ -65,18 +65,26 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
       try { //could this just be select * from products vice id?
         const { rows: products } = await client.query(`
           SELECT *
-          FROM products;
+          FROM products
+
         `);
-    
+
+        //JOIN reviews ON products.id=reviews."productId"
         // const products = await Promise.all(productIds.map(
         //   product => getProductById( product.id ) //Should this just be (product) without the .id?
         // ));
-        
-        const productsAndReviews = await Promise.all(products.map(
-          product => product.reviews = getReviewsByProductId(product.id)
-        ))
-  
-        return productsAndReviews;
+          console.log(products)
+          products.forEach(
+          async (product) => {
+            try{
+            return product.reviews = await getReviewsByProductId(product.id)
+            
+            }catch (error){
+              throw error;
+            }})
+          
+        //console.log(productsAndReviews)
+        return products;
       } catch (error) {
         throw error;
       }
