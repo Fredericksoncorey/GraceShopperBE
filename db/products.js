@@ -68,22 +68,14 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
           FROM products
 
         `);
+          console.log("before for statement", products)
 
-        //JOIN reviews ON products.id=reviews."productId"
-        // const products = await Promise.all(productIds.map(
-        //   product => getProductById( product.id ) //Should this just be (product) without the .id?
-        // ));
-          console.log(products)
-          products.forEach(
-          async (product) => {
-            try{
-            return product.reviews = await getReviewsByProductId(product.id)
-            
-            }catch (error){
-              throw error;
-            }})
-          
-        //console.log(productsAndReviews)
+          for (const idx of products) {
+            const productReviews = await getReviewsByProductId(idx.id)
+            idx.reviews=productReviews;
+          }
+          console.log("after for statement", products)
+
         return products;
       } catch (error) {
         throw error;
