@@ -7,7 +7,7 @@ const { createUser, getUserByUsername, getUser, getAllUsers, getCartByUserId, ge
 const admin = require('./administrator');
 const authenticated = require('./auth');
 
-usersRouter.get('/', /* admin ,*/ async (req, res, next) => {
+usersRouter.get('/', admin, async (req, res, next) => {
     try {
       const users = await getAllUsers();
       res.send(
@@ -16,6 +16,17 @@ usersRouter.get('/', /* admin ,*/ async (req, res, next) => {
     } catch (error) {
       next(error)
     }
+});
+
+usersRouter.get('/info', authenticated, async (req, res, next) => {
+  try {
+    
+    res.send(
+      req.user
+    );
+  } catch (error) {
+    next(error)
+  }
 });
 
 usersRouter.post('/register', async (req, res, next) => {
@@ -65,17 +76,17 @@ usersRouter.post('/login', async (req, res, next) => {
   }
 
   try {
-    const user = await getUser({ username, password });
+    const fetchedUser = await getUser(req.body);
     
-    if (user) {
-      const {id, username, email , isAdmin} = user
+    if (fetchedUser) {
+      const {id, username, email , isAdmin} = fetchedUser
       const token = jwt.sign({
         id: id,
         username: username,
         email: email,
         isAdmin: isAdmin
       }, "Secret Code" /* process.env.JWT_SECRET */);
-      res.send({user: {id: user.id, username:user.username}, message: `Welcome ${user.username}`, token:token });
+      res.send({user: {id: id, username:username}, message: `Welcome ${username}`, token:token });
     } else {
       next({
         name: 'IncorrectCredentialsError',
