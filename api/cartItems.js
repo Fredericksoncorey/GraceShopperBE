@@ -15,9 +15,10 @@ cartItemsRouter.get('/:userId', async (req, res, next ) => {
 })
 
 
-cartItemsRouter.delete('/:productId', authenticated, async (req, res, next) => {
+cartItemsRouter.delete('/:id', authenticated, async (req, res, next) => {
+    console.log(req.params)
     try {
-        const _product = await deleteCartItem(req.params.productId);
+        const _product = await deleteCartItem(req.params.id);
         
         res.send(_product)
     } catch (error) {

@@ -28,12 +28,12 @@ async function createCartItem({userId, productId, quantity}){
     }
 }
 
-async function deleteCartItem({id}) {
+async function deleteCartItem(id) {
     //console.log(id)
     try {
         const {rows: [item] } = await client.query(`
         DELETE FROM cart_items
-        WHERE id=$1
+        WHERE id=${id}
         RETURNING *;
         `);
     return item 
