@@ -29,7 +29,7 @@ async function getReviewsByProductId(productId) {
       FROM reviews
       WHERE "productId"= ${productId}
       `);
-      console.log(reviews)
+      //console.log(reviews)
       return reviews
     } catch (error) {
       throw error;

@@ -68,13 +68,13 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
           FROM products
 
         `);
-          console.log("before for statement", products)
+          //console.log("before for statement", products)
 
           for (const idx of products) {
             const productReviews = await getReviewsByProductId(idx.id)
             idx.reviews=productReviews;
           }
-          console.log("after for statement", products)
+          //console.log("after for statement", products)
 
         return products;
       } catch (error) {

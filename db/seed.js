@@ -77,7 +77,7 @@ try {
 
     CREATE TABLE cart_items (
       id SERIAL PRIMARY KEY,
-      "cartId" INTEGER REFERENCES cart(id),
+      "cartId" INTEGER REFERENCES users(id),
       product INTEGER REFERENCES products(id),
       quantity INTEGER NOT NULL
   );
@@ -89,7 +89,8 @@ try {
     throw error;
 }
 }
-
+// "cartId" INTEGER REFERENCES users(id),
+// product INTEGER REFERENCES products(id),
 //      price MONEY REFERENCES products(price)
 //price INTEGER REFERENCES products(price) - add this back into the order table somehow
 
