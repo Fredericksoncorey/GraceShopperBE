@@ -61,6 +61,21 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
       }
     }
 
+    const getProductsByTitle = async (title) => {
+      const searchTitle = title + "%"
+      try {
+        const {rows: products} = await client.query(`
+          SELECT *
+          FROM products
+          WHERE title LIKE $1
+        `, [searchTitle]);
+        console.log(products, "PRODUCT")
+        return products
+      }catch (error){
+        throw(error)
+      }
+    }
+
     async function getAllProductsWithReviews() {
       try { //could this just be select * from products vice id?
         const { rows: products } = await client.query(`
@@ -124,6 +139,7 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
         getProductById,
         getProductsByGenre,
         getProductsByArtist,
+        getProductsByTitle,
         getAllProductsWithReviews,
         updateProduct,
         destroyProduct

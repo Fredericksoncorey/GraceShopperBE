@@ -1,6 +1,6 @@
 const express = require('express');
 const productsRouter = express.Router();
-const { getProductsByArtist, getAllProductsWithReviews, getProductsByGenre, createProduct, updateProduct, getProductById, destroyProduct} = require('../db/products');
+const { getProductsByArtist, getProductsByTitle, getAllProductsWithReviews, getProductsByGenre, createProduct, updateProduct, getProductById, destroyProduct} = require('../db/products');
 const { getReviewsByProductId } = require('../db/reviews');
 const admin = require('./administrator');
 
@@ -16,7 +16,7 @@ productsRouter.get('/', async (req, res, next) => {
     }
 });
 
-productsRouter.get('/genre/:genre', async (req, res) => {
+productsRouter.get('/genre/:genre', async (req, res, next) => {
     const { genre } = req.params;
     try {
         const productsByGenre = await getProductsByGenre(genre)
@@ -28,13 +28,26 @@ productsRouter.get('/genre/:genre', async (req, res) => {
     }
 });
 
-productsRouter.get('/artist/:artist', async (req, res) => {
+productsRouter.get('/artist/:artist', async (req, res, next) => {
     const { artist } = req.params;
     console.log(req.params)
     try {
         const productsByArtist = await getProductsByArtist(artist)
         res.send(
             productsByArtist
+        );
+    } catch (error) {
+        next(error);
+    }
+});
+
+productsRouter.get('/title/:title', async (req, res, next) => {
+    const { title } = req.params;
+    console.log(title)
+    try {
+        const productsByTitle = await getProductsByTitle(title)
+        res.send(
+            productsByTitle
         );
     } catch (error) {
         next(error);
