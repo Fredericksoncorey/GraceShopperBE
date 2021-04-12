@@ -17,12 +17,14 @@ async function createOrder({userId, productId, quantity}){
 }
 
 async function getOrderById(id) {
+  console.log('in getOrderById')
     try {
-      const {rows: [order]} = await client.query(`
+      const {rows: order} = await client.query(`
         SELECT *
         FROM orders
-        WHERE id = $1
-      `, [id]);
+        WHERE "userId" = ${id}
+      `,);
+      console.log(order)
       return order
     }catch (error){
       throw(error)

@@ -57,8 +57,7 @@ try {
         id SERIAL PRIMARY KEY,
         "userId" INTEGER REFERENCES users(id),
         "productId" INTEGER REFERENCES products(id),
-        quantity INTEGER NOT NULL,
-        UNIQUE ("userId", "productId")
+        quantity INTEGER NOT NULL
     );
     
     CREATE TABLE reviews (
@@ -89,6 +88,8 @@ try {
     throw error;
 }
 }
+
+//        UNIQUE ("userId", "productId")
 // "cartId" INTEGER REFERENCES users(id),
 // product INTEGER REFERENCES products(id),
 //      price MONEY REFERENCES products(price)
