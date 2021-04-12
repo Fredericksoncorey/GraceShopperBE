@@ -66,8 +66,7 @@ try {
         "userId" INTEGER REFERENCES users(id),
         "productId" INTEGER REFERENCES products(id),
         rating INTEGER NOT NULL,
-        review TEXT NOT NULL,
-        UNIQUE ( "userId", "productId")
+        review TEXT NOT NULL
     );
 
     CREATE TABLE cart (
@@ -163,6 +162,7 @@ async function createInitialReviews() {
 
     const reviewsToCreate = [
         {userId: 1, productId: 1, rating: 5, review: "Best album ever!"},
+        {userId: 1, productId: 1, rating: 1, review: "It sucks"},
         {userId: 3, productId: 2, rating: 3, review: "the second one is never as good as the first"},
     ]
   
