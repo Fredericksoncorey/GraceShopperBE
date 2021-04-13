@@ -50,6 +50,6 @@ const reviewsRouter = require('./reviews');
 apiRouter.use('/reviews', reviewsRouter);
 
 const ordersRouter = require('./orders');
-apiRouter.use('/rorders', ordersRouter);
+apiRouter.use('/orders', ordersRouter);
 
 module.exports = apiRouter
