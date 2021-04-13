@@ -109,7 +109,7 @@ productsRouter.patch('/update/:productId', admin, async (req, res, next) => {
         update.releaseDate = releaseDate;
     }
     if (quantity) {
-        update.releaseDate = releaseDate;
+        update.quantity = quantity;
     } 
 
     try {
