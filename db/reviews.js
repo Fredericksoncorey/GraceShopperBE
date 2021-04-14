@@ -1,5 +1,6 @@
 const client = require('./client.js');
 
+
 async function createReview({userId, productId, rating, review}){
     //console.log(userId, productId, review)
     try {
@@ -29,7 +30,7 @@ async function getReviewsByProductId(productId) {
       FROM reviews
       WHERE "productId"= ${productId}
       `);
-      //console.log(reviews)
+      
       return reviews
     } catch (error) {
       throw error;

@@ -7,7 +7,7 @@ const admin = require('./administrator');
 productsRouter.get('/', async (req, res, next) => {
     try {
         const products = await getAllProductsWithReviews();
-
+        console.log(products)
         res.send(
             products
         );

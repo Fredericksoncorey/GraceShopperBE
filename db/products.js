@@ -1,5 +1,6 @@
 const client = require('./client.js');
 const {getReviewsByProductId} = require('./reviews');
+const { getUserById } = require('./users.js');
 
 async function createProduct({title, imageLink, artist, genre, releaseDate, description, price, quantity}){
     //console.log(id)
@@ -15,14 +16,20 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
     throw error;
     }
 }
-    async function getProductById(userId) {
+    async function getProductById(id) {
       try {
         // first get the user (NOTE: Remember the query returns
         const {rows: [product]} = await client.query(`
           SELECT *
           FROM products
           WHERE id = $1
-        `, [userId]);
+        `, [id]);
+        for (const idx of products) {
+          const productReviews = await getReviewsByProductId(idx.id)
+          idx.reviews=productReviews;
+          
+          
+        }
         
         return product
       }catch (error){
@@ -39,6 +46,15 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
           WHERE genre = $1
         `, [genre]);
         console.log(products)
+        for (const idx of products) {
+          const productReviews = await getReviewsByProductId(idx.id)
+          
+          for(const key of productReviews){
+            const user = await getUserById(key.userId)
+            key.byUser = user.username
+          }
+          idx.reviews=productReviews;
+        }
         return products
       }catch (error){
         throw(error)
@@ -55,6 +71,15 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
           WHERE artist = $1
         `, [artist]);
         console.log(products)
+        for (const idx of products) {
+          const productReviews = await getReviewsByProductId(idx.id)
+          
+          for(const key of productReviews){
+            const user = await getUserById(key.userId)
+            key.byUser = user.username
+          }
+          idx.reviews=productReviews;
+        }
         return products
       }catch (error){
         throw(error)
@@ -70,6 +95,15 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
           WHERE title LIKE $1
         `, [searchTitle]);
         console.log(products, "PRODUCT")
+        for (const idx of products) {
+          const productReviews = await getReviewsByProductId(idx.id)
+          
+          for(const key of productReviews){
+            const user = await getUserById(key.userId)
+            key.byUser = user.username
+          }
+          idx.reviews=productReviews;
+        }
         return products
       }catch (error){
         throw(error)
@@ -87,10 +121,16 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
 
           for (const idx of products) {
             const productReviews = await getReviewsByProductId(idx.id)
+            
+            for(const key of productReviews){
+              const user = await getUserById(key.userId)
+              key.byUser = user.username
+            }
             idx.reviews=productReviews;
+            
           }
           //console.log("after for statement", products)
-
+          console.log(products.reviews)
         return products;
       } catch (error) {
         throw error;
