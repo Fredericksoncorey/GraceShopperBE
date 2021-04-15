@@ -15,8 +15,9 @@ ordersRouter.get('/:Id', authenticated, async (req, res, next) => {
     }
 });
 
-ordersRouter.post('/', authenticated, async (req, res, next) => {
-    //console.log(req.body)
+// authenticated,
+ordersRouter.post('/', async (req, res, next) => {
+    console.log(req.body)
     try {
         const order = await createOrder(req.body)
         res.send(order)
