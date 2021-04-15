@@ -1,13 +1,13 @@
 const client = require('./client.js');
 
-async function createOrder({userId, productId, quantity}){
+async function createOrder({userId, guestEmail, productId, quantity}){
     //console.log(id)
     try {
     const { rows: [ order ] } = await client.query(`
-        INSERT INTO orders("userId", "productId", quantity) 
-        VALUES($1, $2, $3)
+        INSERT INTO orders("userId", "guestEmail", "productId", quantity) 
+        VALUES($1, $2, $3, $4)
         RETURNING *;
-    `, [userId, productId, quantity]);
+    `, [userId, guestEmail, productId, quantity]);
     //console.log(id)
     return order
     } catch (error) {
@@ -17,12 +17,14 @@ async function createOrder({userId, productId, quantity}){
 }
 
 async function getOrderById(id) {
+  console.log('in getOrderById')
     try {
-      const {rows: [order]} = await client.query(`
+      const {rows: order} = await client.query(`
         SELECT *
         FROM orders
-        WHERE id = $1
-      `, [id]);
+        WHERE "userId" = ${id}
+      `,);
+      console.log(order)
       return order
     }catch (error){
       throw(error)

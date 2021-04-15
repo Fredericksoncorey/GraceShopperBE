@@ -20,7 +20,7 @@ apiRouter.use(async (req, res, next) => { // for bearer token
             const { id } = jwt.verify(token, "Secret Code");
             if (id) {
                 req.user = await getUserById(id);
-                console.log(req.user, "line 25 api/index")
+                //console.log(req.user, "line 25 api/index")
                 next();
             }
         } catch ({ name, message }) {
@@ -50,6 +50,6 @@ const reviewsRouter = require('./reviews');
 apiRouter.use('/reviews', reviewsRouter);
 
 const ordersRouter = require('./orders');
-apiRouter.use('/rorders', ordersRouter);
+apiRouter.use('/orders', ordersRouter);
 
 module.exports = apiRouter

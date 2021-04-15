@@ -85,6 +85,7 @@ productsRouter.patch('/update/:productId', admin, async (req, res, next) => {
         res.send({message: "Error: Something went wrong! No update Data Received"})
     }
     const update = {};
+    console.log(req.params)
 
     if (description) {
         update.description = description;
@@ -108,7 +109,7 @@ productsRouter.patch('/update/:productId', admin, async (req, res, next) => {
         update.releaseDate = releaseDate;
     }
     if (quantity) {
-        update.releaseDate = releaseDate;
+        update.quantity = quantity;
     } 
 
     try {

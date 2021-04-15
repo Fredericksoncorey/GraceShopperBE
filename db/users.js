@@ -134,6 +134,34 @@ const getUserByEmail = async (email)=>{
     }
 }
 
+const deleteUser = async id => {
+    try {
+        const { rows: [user] } = await client.query(`
+            DELETE FROM users
+            WHERE id=$1
+            RETURNING *;
+        `, [id]);
+        if(!user){return}
+        return user;
+    } catch (error) {
+        throw({message :error.message});
+    }
+}
+
+const getUserInfo = async (username) => {
+
+    try {
+        const {rows: [user]} = await client.query(`
+         SELECT *
+         FROM users
+         WHERE username = $1;
+         RETURNING *;
+         `, [username])
+             return user;
+     } catch (error) {
+         throw(error)
+     } 
+}
 
 module.exports = {
     createUser,
@@ -142,5 +170,7 @@ module.exports = {
     getUserByUsername,
     getAllUsers,
     editProfile,
-    getUserByEmail
+    getUserByEmail,
+    deleteUser,
+    getUserInfo
 }
