@@ -3,7 +3,7 @@ const usersRouter = express.Router();
 const jwt = require('jsonwebtoken');
 const { token } = require('morgan');
 const { JWT_SECRET }  = process.env
-const { createUser, getUserByUsername, getUser, getAllUsers, getCartByUserId, getOrdersByUserId, getUserByEmail, getUserById, editProfile } = require('../db');
+const { createUser, getUserByUsername, getUser, getAllUsers, getCartByUserId, getOrdersByUserId, getUserByEmail, getUserById, editProfile, deleteUser } = require('../db');
 const admin = require('./administrator');
 const authenticated = require('./auth');
 
@@ -164,6 +164,23 @@ usersRouter.patch('/:userId', authenticated, async (req, res, next) => {
     } catch (error) {
         next(error);
     }
+});
+
+usersRouter.delete('/:userId', admin, async (req, res, next) => {
+  const {userId} = req.params
+  try {
+      //const productToDelete = await getProductById(productId);
+      const deletedUser = await deleteUser(userId);
+      if(!deletedUser){
+          res.send(
+          {error: "PostNotFoundError",
+          message: "User by that ID does not exist"}
+          )
+      }
+      res.send(deletedUser);
+  } catch (error) {
+      next(error);
+  }
 });
 
 module.exports = usersRouter;
