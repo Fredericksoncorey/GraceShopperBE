@@ -174,6 +174,21 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
     }
 }
 
+const makeGenreList = async () => {
+  try {
+    const {rows :genre} = await client.query(`
+        SELECT DISTINCT genre 
+        FROM products
+    `);
+    let genreList = []
+    genre.forEach(genre=>genreList.push(genre.genre))
+    return genreList;
+} catch (error) {
+    throw({message :error.message});
+}
+}
+
+
     module.exports = {
         createProduct,
         getProductById,
@@ -182,6 +197,7 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
         getProductsByTitle,
         getAllProductsWithReviews,
         updateProduct,
-        destroyProduct
+        destroyProduct,
+        makeGenreList
       }
 

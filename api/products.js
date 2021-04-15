@@ -1,12 +1,24 @@
 const express = require('express');
 const productsRouter = express.Router();
-const { getProductsByArtist, getProductsByTitle, getAllProductsWithReviews, getProductsByGenre, createProduct, updateProduct, getProductById, destroyProduct} = require('../db/products');
+const { makeGenreList, getProductsByArtist, getProductsByTitle, getAllProductsWithReviews, getProductsByGenre, createProduct, updateProduct, getProductById, destroyProduct} = require('../db/products');
 const { getReviewsByProductId } = require('../db/reviews');
 const admin = require('./administrator');
 
 productsRouter.get('/', async (req, res, next) => {
     try {
         const products = await getAllProductsWithReviews();
+        console.log(products)
+        res.send(
+            products
+        );
+    } catch (error) {
+        next(error);
+    }
+});
+
+productsRouter.get('/genreList', async (req, res, next) => {
+    try {
+        const products = await makeGenreList();
         console.log(products)
         res.send(
             products

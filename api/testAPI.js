@@ -178,7 +178,7 @@ const testUsersPatchSLASHUserId = async (/* userId */) => { //get /users
                 }
             }
     )
-        const data = response.json()
+        const data = await response.json()
         //console.log(data)
         return data
     } catch (error) {
@@ -384,7 +384,7 @@ const testproductsSLASHReview = async (review) => { //get /artist
     try {
         const response = await fetch(`http://localhost:3000/api/products/artist/${artistParam}`
     )
-        const data = response.json()
+        const data = await response.json()
         console.log(data)
         return data
     } catch (error) {
@@ -413,7 +413,7 @@ const testProductsPostSLASH = async () => {
                 }
             }
     )
-        const data = response.json()
+        const data = await response.json()
         //console.log(data)
         return data
     } catch (error) {
@@ -432,7 +432,7 @@ const testProductsDeleteSLASHProductId = async (productId) => {
                 }
             }
     )
-        const data = response.json()
+        const data = await response.json()
         //console.log(data)
         return data
     } catch (error) {
@@ -461,7 +461,19 @@ const testProductsPatchSLASH = async (productId) => {
                 }
             }
     )
-        const data = response.json()
+        const data = await response.json()
+        //console.log(data)
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const testProductsSLASHgenreList = async () => { //get /products
+    try {
+        const response = await fetch(`http://localhost:3000/api/products/genreList`
+    )
+        const data = await response.json()
         //console.log(data)
         return data
     } catch (error) {
@@ -477,13 +489,12 @@ const testAPI = async (testFunction, string) => {
         //console.log(await testUsersDOTget())
 
         console.log(`RESULTS FOR ${string}`) 
-        console.log(await testFunction(5))
+        console.log(await testFunction())
         //console.log("RESULTS", await testUsersPostSLASHLogin())
         // console.log(await testSLASHproducts())
         // console.log(await testSLASHgenre())
         // console.log(await testSLASHartist())
         //console.log(await testUsersSLASHregister())
-        console.log(await testGetAllProductsWithReviews())
     } catch (error) {
         console.error(error)
     }
@@ -491,4 +502,4 @@ const testAPI = async (testFunction, string) => {
 
 }
 
-testAPI(testGetAllProductsWithReviews, 'testGetAllProductsWithReviews')
+testAPI(testProductsSLASHgenreList, 'testProductsSLASHgenreList')
