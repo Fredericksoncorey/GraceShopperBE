@@ -4,7 +4,8 @@ const {createProduct} = require('./products.js')
 const {createOrder} = require('./orders.js')
 const {createReview} = require('./reviews.js')
 const {createShoppingCart, getCartByUserId} = require('./cart.js')
-const {createCartItem} = require('./cartItems.js')
+const {createCartItem} = require('./cartItems.js');
+//const { getMaxListeners } = require('node:process');
 
 
 async function dropTables() {
@@ -56,6 +57,7 @@ try {
     CREATE TABLE orders (
         id SERIAL PRIMARY KEY,
         "userId" INTEGER REFERENCES users(id),
+        "guestEmail" TEXT,
         "productId" INTEGER REFERENCES products(id),
         quantity INTEGER NOT NULL
     );
@@ -142,7 +144,8 @@ async function createInitialOrders() {
     
         const ordersToCreate = [
             {userId: 2, productId: 1, quantity: 2},
-            {userId: 1, productId: 2, quantity: 1}
+            {userId: 1, productId: 2, quantity: 1},
+            {guestEmail: "david@gmail.com", productId: 3, quantity: 1}
         ]
     
       const orders = await Promise.all(ordersToCreate.map(createOrder));
