@@ -20,7 +20,7 @@ apiRouter.use(async (req, res, next) => { // for bearer token
             const { id } = jwt.verify(token, "Secret Code");
             if (id) {
                 req.user = await getUserById(id);
-                console.log(req.user, "line 25 api/index")
+                //console.log(req.user, "line 25 api/index")
                 next();
             }
         } catch ({ name, message }) {

@@ -3,6 +3,8 @@ const cartItemsRouter = express.Router();
 const authenticated = require('./auth');
 const { deleteCartItem, createCartItem, getCartItems } = require('../db');
 
+console.log('request is being made to cartItemsRouter')
+
 cartItemsRouter.get('/:userId', async (req, res, next ) => {
     console.log('req.params: ', req.params)
     try {
@@ -27,7 +29,7 @@ cartItemsRouter.delete('/:id', authenticated, async (req, res, next) => {
 });
 
 cartItemsRouter.post('/', authenticated, async (req, res, next) => {
-console.log(req.body)
+console.log("cartItemsRouter.post; req.body: ", req.body)
  const {userId, productId, quantity} = req.body
  try{
      const newCartItem = {userId, productId, quantity}
