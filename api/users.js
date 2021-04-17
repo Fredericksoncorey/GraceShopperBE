@@ -134,6 +134,19 @@ usersRouter.get('/:username/orders', authenticated, async (req, res, next) => {
     }
 });
 
+// usersRouter.get('/:userId', async(req, res, next) => {
+//   const { userId } = req.params;
+
+//   try {
+//     const user = await getUserById(userId);
+//     const token = jwt.sign({
+//       id: id
+//     }, "Secret Code" /* process.env.JWT_SECRET */);
+//     res.send({token:token, user})
+// } catch (error) {
+//   next(error);
+// }})
+
 usersRouter.patch('/:userId', authenticated, async (req, res, next) => {
     const { userId } = req.params;
     /* const { username, address, phone } = req.body; */ const { username, email } = req.body;
@@ -159,7 +172,7 @@ usersRouter.patch('/:userId', authenticated, async (req, res, next) => {
         if (id === req.user.id) {
             const updateProfile = await editProfile(update)
             /* -- */ delete updateProfile.password  /* -- Remove if deciding to edit passwords */
-            res.send(updateProfile)
+            res.send({updateProfile})
         }
     } catch (error) {
         next(error);
