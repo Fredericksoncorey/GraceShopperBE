@@ -134,18 +134,6 @@ usersRouter.get('/:username/orders', authenticated, async (req, res, next) => {
     }
 });
 
-// usersRouter.get('/:userId', async(req, res, next) => {
-//   const { userId } = req.params;
-
-//   try {
-//     const user = await getUserById(userId);
-//     const token = jwt.sign({
-//       id: id
-//     }, "Secret Code" /* process.env.JWT_SECRET */);
-//     res.send({token:token, user})
-// } catch (error) {
-//   next(error);
-// }})
 
 usersRouter.patch('/:userId', authenticated, async (req, res, next) => {
     const { userId } = req.params;
@@ -155,18 +143,9 @@ usersRouter.patch('/:userId', authenticated, async (req, res, next) => {
     if (username) {
         update.username = username;
     }
-
     if(email){
       update.email = email
     }
-    /* if (address) {
-        update.address = address;
-    } */
-
-    /* if (phone) {
-        update.phone = phone;
-    } */
-
     try {
         const { id } = await getUserById(userId);
         if (id === req.user.id) {
