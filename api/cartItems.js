@@ -1,7 +1,7 @@
 const express = require('express');
 const cartItemsRouter = express.Router();
 const authenticated = require('./auth');
-const { deleteCartItem, createCartItem, getCartItems } = require('../db');
+const { deleteCartItem, createCartItem, getCartItems, updateQuantity } = require('../db');
 
 console.log('request is being made to cartItemsRouter')
 
@@ -38,6 +38,18 @@ console.log("cartItemsRouter.post; req.body: ", req.body)
  }catch(error) {
   next(error)
  }
+})
+
+cartItemsRouter.patch('/:id/:quantity', async (req, res, next) => {
+    ///console.log('in cartItemsRouter', req.body)
+    try {
+        const id = req.params.id
+        const quantity = req.params.quantity
+        const response = await updateQuantity(id, quantity)
+        res.send(response)
+    } catch (error) {
+        next(error)
+    }
 })
 
 module.exports = cartItemsRouter
