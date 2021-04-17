@@ -6,8 +6,8 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
     //console.log(id)
     try {
     const { rows: [ product ] } = await client.query(`
-        INSERT INTO products(title, "imageLink", artist, genre, "releaseDate", description, price, quantity) 
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8)
+        INSERT INTO products(title, "imageLink", artist, genre, "releaseDate", description, price, quantity, active) 
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, true)
         RETURNING *;
     `, [title, imageLink, artist, genre, releaseDate, description, price, quantity]);
     //console.log(id)
@@ -115,6 +115,7 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
         const { rows: products } = await client.query(`
           SELECT *
           FROM products
+          WHERE active = true
 
         `);
           //console.log("before for statement", products)
@@ -163,9 +164,9 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
   const destroyProduct = async id => {
     try {
         const { rows: [product] } = await client.query(`
-            DELETE FROM products
-            WHERE id=$1
-            RETURNING *;
+        UPDATE products
+        SET active=FALSE
+        WHERE id=$1;
         `, [id]);
         if(!product){return}
         return product;
