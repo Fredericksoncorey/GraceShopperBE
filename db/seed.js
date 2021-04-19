@@ -171,9 +171,9 @@ async function createInitialReviews() {
         {userId: 1, productId: 9, rating: 1, review: "It sucks"},
         {userId: 3, productId: 2, rating: 3, review: "the second one is never as good as the first"},
         {userId: 1, productId: 8, rating: 1, review: "It sucks"},
-        {userId: 2, productId: 2, rating: 3, review: "the second one is never as good as the first"},
+        {userId: 2, productId: 2, rating: 3, review: "Best album ever!"},
         {userId: 2, productId: 4, rating: 1, review: "It sucks"},
-        {userId: 3, productId: 5, rating: 3, review: "the second one is never as good as the first"},
+        {userId: 3, productId: 5, rating: 5, review: "Best Album ever!"},
         {userId: 1, productId: 6, rating: 1, review: "It sucks"},
         {userId: 3, productId: 7, rating: 3, review: "the second one is never as good as the first"},
     ]
