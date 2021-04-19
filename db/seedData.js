@@ -190,7 +190,7 @@ const productsToCreate = [
     ),
     productsToCreateHelper(
         'The Bodyguard',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
+        'https://upload.wikimedia.org/wikipedia/en/f/f3/TheBodyguardSoundtrack.jpg', 
         'Whitney Houston', 
         'Pop', 
         'November 17, 1982', 
@@ -230,7 +230,7 @@ const productsToCreate = [
     ),
     productsToCreateHelper(
         'Breakfast in America',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
+        'https://upload.wikimedia.org/wikipedia/en/c/c4/Supertramp_-_Breakfast_in_America.jpg', 
         'Supertramp', 
         'progressive rock', 
         '29 March 1979', 
@@ -270,7 +270,7 @@ const productsToCreate = [
     ),
     productsToCreateHelper(
         'Greatest Hits',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
+        'https://upload.wikimedia.org/wikipedia/en/0/02/Queen_Greatest_Hits.png', 
         'Queen', 
         'Rock', 
         '26 October 1981', 
@@ -310,7 +310,7 @@ const productsToCreate = [
     ),
     productsToCreateHelper(
         'The Woman in Me',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
+        'https://upload.wikimedia.org/wikipedia/en/d/d2/Shania_Twain_-_The_Woman_in_Me.png', 
         'Shania Twain', 
         'Country', 
         'February 7, 1995', 
