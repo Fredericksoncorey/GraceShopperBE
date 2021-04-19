@@ -63,13 +63,14 @@ async function createProduct({title, imageLink, artist, genre, releaseDate, desc
     } 
 
     const getProductsByArtist = async (artist) => {
+      let newArtist = artist+"%"
 
       try {
         const {rows: products} = await client.query(`
           SELECT *
           FROM products
-          WHERE artist = $1
-        `, [artist]);
+          WHERE artist LIKE $1
+        `,[newArtist]);
         console.log(products)
         for (const idx of products) {
           const productReviews = await getReviewsByProductId(idx.id)
