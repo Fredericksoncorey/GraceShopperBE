@@ -189,509 +189,163 @@ const productsToCreate = [
         20
     ),
     productsToCreateHelper(
-        'Thriller',
+        'The Bodyguard',
         'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
+        'Whitney Houston', 
         'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
+        'November 17, 1982', 
+        `<b>Side one</b>
+
+        <ol>
+
+        <li>"I will always love you" 4:31</li>
+
+        <li>"Someday (I'm Coming Back)" 4:57</li>
+
+        <li>"I Have Nothing" 4:49</li>
+
+        <li>"I'm Every Woman" 4:45</li>
+
+        <li>"Queen of the Night" 3:03</li>
+
+        </ol>
+
+        <b>Side two</b>
+
+        <ol>
+
+        <li>"Jesus Loves Me" 5:12</li>
+
+        <li>"Even If My Heart Would Break" 4:57</li>
+
+        <li>"It's Gonna Be a Lovely Day" 4:47</li>
+
+        <li>"Waiting for You" 4:58</li>
+
+        <li>"Trust in Me"4:12 </li>
+
+        </ol>`, 
+        21.00, 
         20
     ),
     productsToCreateHelper(
-        'Thriller',
+        'Breakfast in America',
         'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
+        'Supertramp', 
+        'progressive rock', 
+        '29 March 1979', 
+        `<b>Side one</b>
+
+        <ol>
+
+        <li>"Gone Hollywood" 5:19</li>
+
+        <li>"The Logical Song" 4:07</li>
+
+        <li>"Goodbye Stranger" 5:46</li>
+
+        <li>"Breakfast in America" 2:37</li>
+
+        <li>"Oh Darling" 3:43</li>
+
+        </ol>
+
+        <b>Side two</b>
+
+        <ol>
+
+        <li>"Take the Long Way Home" 5:08</li>
+
+        <li>"Lord Is It Mine" 4:08</li>
+
+        <li>"Just Another Nervous Wreck" 4:22</li>
+
+        <li>"Casual Conversations" 2:56</li>
+
+        <li>"Child of Vision" 7:24 </li>
+
+        </ol>`, 
+        22.00, 
         20
     ),
     productsToCreateHelper(
-        'Thriller',
+        'Greatest Hits',
         'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
+        'Queen', 
+        'Rock', 
+        '26 October 1981', 
+        `<b>Side one</b>
+
+        <ol>
+
+        <li>"Bohemian Rhapsody" 5:57</li>
+
+        <li>"Another One Bites the Dust" 3:36</li>
+
+        <li>"Killer Queen" 2:57</li>
+
+        <li>"Fat Bottomed Girls" 3:22</li>
+
+        <li>"Bicycle Race" 3:01</li>
+
+        </ol>
+
+        <b>Side two</b>
+
+        <ol>
+
+        <li>"Crazy Little Thing Called Love" 4:42</li>
+
+        <li>"Somebody to Love" 4:56</li>
+
+        <li>"Now I'm Here" 4:10</li>
+
+        <li>"Good Old-Fashioned Lover Boy" 2:54</li>
+
+        <li>"Play the Game" 3:33 </li>
+
+        </ol>`, 
+        30.00, 
         20
     ),
     productsToCreateHelper(
-        'Thriller',
+        'The Woman in Me',
         'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
-        20
-    ),
-    productsToCreateHelper(
-        'Thriller',
-        'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png', 
-        'Michael Jackson', 
-        'Pop', 
-        'November 30, 1982', 
-        `"The Girl Is Mine"
-        Released: October 18, 1982
-        "Billie Jean"
-        Released: January 2, 1983
-        "Beat It"
-        Released: February 14, 1983
-        "Wanna Be Startin' Somethin'"
-        Released: May 8, 1983
-        "Human Nature"
-        Released: July 3, 1983[1]
-        "P.Y.T. (Pretty Young Thing)"
-        Released: September 19, 1983[2]
-        "Thriller"
-        Released: November 2, 1983`, 
-        27.00, 
+        'Shania Twain', 
+        'Country', 
+        'February 7, 1995', 
+        `<b>Side one</b>
+
+        <ol>
+
+        <li>"Home Ain't Where His Heart Is (Anymore)" 4:12</li>
+
+        <li>"Any Man of Mine" 4:06</li>
+
+        <li>"Whose Bed Have Your Boots Been Under?" 4:25</li>
+
+        <li>"If You're Not in It for Love) I'm Outta Here!" 4:30</li>
+
+        <li>"The Woman in Me (Needs the Man in You)" 4:50</li>
+
+        </ol>
+
+        <b>Side two</b>
+
+        <ol>
+
+        <li>"Is There Life After Love?" 4:39</li>
+
+        <li>"If It Don't Take Two" 3:40</li>
+
+        <li>"You Win My Love" 4:26</li>
+
+        <li>"Raining on Our Love" 4:38</li>
+
+        <li>"Leaving Is the Only Way Out" 4:07 </li>
+
+        </ol>`, 
+        21.00, 
         20
     ),
 ]

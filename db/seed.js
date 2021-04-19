@@ -168,8 +168,14 @@ async function createInitialReviews() {
 
     const reviewsToCreate = [
         {userId: 1, productId: 1, rating: 5, review: "Best album ever!"},
-        {userId: 1, productId: 1, rating: 1, review: "It sucks"},
+        {userId: 1, productId: 9, rating: 1, review: "It sucks"},
         {userId: 3, productId: 2, rating: 3, review: "the second one is never as good as the first"},
+        {userId: 1, productId: 8, rating: 1, review: "It sucks"},
+        {userId: 2, productId: 2, rating: 3, review: "the second one is never as good as the first"},
+        {userId: 2, productId: 4, rating: 1, review: "It sucks"},
+        {userId: 3, productId: 5, rating: 3, review: "the second one is never as good as the first"},
+        {userId: 1, productId: 6, rating: 1, review: "It sucks"},
+        {userId: 3, productId: 7, rating: 3, review: "the second one is never as good as the first"},
     ]
   
     const reviews = await Promise.all(reviewsToCreate.map(createReview));
