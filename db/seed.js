@@ -106,6 +106,12 @@ async function createInitialUsers() {
         { username: 'albert', password: 'bertie99', email: 'albert@gmail.com', isAdmin: false },
         { username: 'sandra', password: 'sandra123', email: 'sandra@gmail.com', isAdmin: false},
         { username: 'glamgal', password: 'glamgal123', email: 'glamgal@gmail.com', isAdmin: true},
+        { username: 'bob', password: 'bobbie99', email: 'bob@gmail.com', isAdmin: false },
+        { username: 'sally', password: 'sallyjane1', email: 'sallyjane@gmail.com', isAdmin: false},
+        { username: 'cooper', password: 'coopcoop2', email: 'coopcoop@gmail.com', isAdmin: true},
+        { username: 'billy', password: 'bobbie99', email: 'billybob@gmail.com', isAdmin: false },
+        { username: 'sue', password: 'suesue12', email: 'suesue@gmail.com', isAdmin: false},
+        { username: 'debbie', password: 'debbiedeb2', email: 'debbie@gmail.com', isAdmin: true},
       ]
       const users = await Promise.all(usersToCreate.map(createUser));
   
@@ -168,14 +174,14 @@ async function createInitialReviews() {
 
     const reviewsToCreate = [
         {userId: 1, productId: 1, rating: 5, review: "Best album ever!"},
-        {userId: 1, productId: 9, rating: 1, review: "It sucks"},
+        {userId: 1, productId: 9, rating: 1, review: "I was not impressed with this album"},
         {userId: 3, productId: 2, rating: 3, review: "the second one is never as good as the first"},
-        {userId: 1, productId: 8, rating: 1, review: "It sucks"},
-        {userId: 2, productId: 2, rating: 3, review: "Best album ever!"},
-        {userId: 2, productId: 4, rating: 1, review: "It sucks"},
+        {userId: 1, productId: 8, rating: 5, review: "I can't stop listening to it!"},
+        {userId: 2, productId: 2, rating: 4, review: "This was a hit at my party"},
+        {userId: 2, productId: 4, rating: 1, review: "This was terrible"},
         {userId: 3, productId: 5, rating: 5, review: "Best Album ever!"},
-        {userId: 1, productId: 6, rating: 1, review: "It sucks"},
-        {userId: 3, productId: 7, rating: 3, review: "the second one is never as good as the first"},
+        {userId: 1, productId: 6, rating: 1, review: "Hated it!"},
+        {userId: 3, productId: 7, rating: 5, review: "loved it!"},
     ]
   
     const reviews = await Promise.all(reviewsToCreate.map(createReview));
