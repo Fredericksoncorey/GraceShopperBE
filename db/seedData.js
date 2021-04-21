@@ -232,7 +232,7 @@ const productsToCreate = [
         'Breakfast in America',
         'https://upload.wikimedia.org/wikipedia/en/c/c4/Supertramp_-_Breakfast_in_America.jpg', 
         'Supertramp', 
-        'progressive rock', 
+        'Progressive Rock', 
         '29 March 1979', 
         `<b>Side one</b>
 
@@ -346,6 +346,326 @@ const productsToCreate = [
 
         </ol>`, 
         21.00, 
+        20
+    ),
+    productsToCreateHelper(
+        'Slippery When Wet',
+        'https://upload.wikimedia.org/wikipedia/en/a/ab/Bon_jovi_slippery_when_wet.jpg', 
+        'Bon Jovi', 
+        'Hard Rock', 
+        'August 18, 1986', 
+        `<b>Side one</b>
+
+        <ol>
+
+        <li>"Let It Rock" 5:26</li>
+
+        <li>"You Give Love a Bad Name" 3:43</li>
+
+        <li>"Livin' on a Prayer" 4:11</li>
+
+        <li>"Social Disease" 4:18</li>
+
+        <li>"Wanted Dead or Alive" 5:09</li>
+
+        </ol>
+
+        <b>Side two</b>
+
+        <ol>
+
+        <li>"Raise Your Hands" 4:17</li>
+
+        <li>"Without Love" 3:31</li>
+
+        <li>"I'd Die for You" 4:31</li>
+
+        <li>"Never Say Goodbye" 4:49</li>
+
+        <li>"Wild in the Streets" 3:56 </li>
+
+        </ol>`, 
+        18.00, 
+        20
+    ),
+    productsToCreateHelper(
+        'Hysteria',
+        'https://upload.wikimedia.org/wikipedia/en/4/40/Def_Leppard_-_Hysteria_%28vinyl_version%29.jpg', 
+        'Def Leppard', 
+        'Hard Rock', 
+        '3 August 1987', 
+        `<b>Side one</b>
+
+        <ol>
+
+        <li>"Women" 5:42</li>
+
+        <li>"Rocket" 6:35</li>
+
+        <li>"Animal" 4:04</li>
+
+        <li>"Love Bites" 5:47</li>
+
+        <li>"Pour Some Sugar on Me" 4:27</li>
+
+        </ol>
+
+        <b>Side two</b>
+
+        <ol>
+
+        <li>"Gods of War" 6:37</li>
+
+        <li>"Don't Shoot Shotgun" 4:27</li>
+
+        <li>"Run Riot" 4:39</li>
+
+        <li>"Hysteria" 5:55</li>
+
+        <li>"Excitable" 4:47 </li>
+
+        </ol>`, 
+        20.00, 
+        20
+    ),
+    productsToCreateHelper(
+        'Gunslinger',
+        'https://upload.wikimedia.org/wikipedia/en/9/93/Garth-Gunslinger-Cover.jpg', 
+        'Garth Brooks', 
+        'Country', 
+        'November 25, 2016', 
+        `<b>Side one</b>
+
+        <ol>
+
+        <li>"Honky-Tonk Somewhere" 2:25</li>
+
+        <li>"Weekend" 2:40</li>
+
+        <li>"Ask Me How I Know" 3:34</li>
+
+        <li>"Baby, Let's Lay Down and Dance" 3:10</li>
+
+        <li>"He Really Loves You" 4:00</li>
+
+        </ol>
+
+        <b>Side two</b>
+
+        <ol>
+
+        <li>"Pure Adrenaline" 3:49</li>
+
+        <li>"Whiskey to Wine" 4:13</li>
+
+        <li>"BANG! BANG!" 3:10</li>
+
+        <li>"Cowboys and Friends" 4:38</li>
+
+        <li>"8teen" 4:49 </li>
+
+        </ol>`, 
+        23.00, 
+        20
+    ),
+    productsToCreateHelper(
+        'Here for a Good Time',
+        'https://upload.wikimedia.org/wikipedia/en/e/e5/HereforaGoodTime.jpg', 
+        'George Straight', 
+        'Country', 
+        'September 6, 2011', 
+        `<b>Side one</b>
+
+        <ol>
+
+        <li>"Love's Gonna Make It Alright" 3:50</li>
+
+        <li>"Drinkin' Man" 4:27</li>
+
+        <li>"Shame On Me" 2:39</li>
+
+        <li>"Poison" 3:39</li>
+
+        <li>"Here for a Good Time" 3:01</li>
+
+        </ol>
+
+        <b>Side two</b>
+
+        <ol>
+
+        <li>"House Across the Bay" 3:36</li>
+
+        <li>"Lone Star Blues" 4:18</li>
+
+        <li>"A Showman’s Life" 4:43</li>
+
+        <li>"Three Nails and a Cross" 3:43</li>
+
+        <li>"Blue Marlin Blues" 3:24 </li>
+
+        </ol>`, 
+        25.00, 
+        20
+    ),
+    productsToCreateHelper(
+        'The Colour of My Love',
+        'https://upload.wikimedia.org/wikipedia/en/7/72/The_color_of_my_love.jpg', 
+        'Celine Dion', 
+        'Pop', 
+        '9 November 1993', 
+        `<b>Side one</b>
+
+        <ol>
+
+        <li>"The Power of Love" 5:42</li>
+
+        <li>"Misled" 4:06</li>
+
+        <li>"Think Twice" 4:25</li>
+
+        <li>"Only One Road" 4:30</li>
+
+        <li>"Everybody's Talkin' My Baby Down" 4:50</li>
+
+        </ol>
+
+        <b>Side two</b>
+
+        <ol>
+
+        <li>"Next Plane Out" 4:39</li>
+
+        <li>"Real Emotion" 3:40</li>
+
+        <li>"When I Fall in Love" 4:26</li>
+
+        <li>"Love Doesn't Ask Why" 4:38</li>
+
+        <li>"Refuse to Dance" 4:07 </li>
+
+        </ol>`, 
+        18.00, 
+        20
+    ),
+    productsToCreateHelper(
+        'The Joshua Tree',
+        'https://upload.wikimedia.org/wikipedia/en/6/6b/The_Joshua_Tree.png', 
+        'U2', 
+        'Rock', 
+        '9 March 1987', 
+        `<b>Side one</b>
+
+        <ol>
+
+        <li>"Where the Streets Have No Name" 5:38</li>
+
+        <li>"I Still Haven't Found What I'm Looking For" 4:38</li>
+
+        <li>"With or Without You" 4:56</li>
+
+        <li>"Bullet the Blue Sky" 4:32</li>
+
+        <li>"Running to Stand Still" 4:18</li>
+
+        </ol>
+
+        <b>Side two</b>
+
+        <ol>
+
+        <li>"Red Hill Mining Town" 4:54</li>
+
+        <li>"In God's Country" 2:57</li>
+
+        <li>"Trip Through Your Wires" 3:33</li>
+
+        <li>"One Tree Hill" 5:23</li>
+
+        <li>"Exit" 4:13 </li>
+
+        </ol>`, 
+        18.00, 
+        20
+    ),
+    productsToCreateHelper(
+        'Tommy',
+        'https://upload.wikimedia.org/wikipedia/en/1/19/Tommyalbumcover.jpg', 
+        'The Who', 
+        'Hard Rock', 
+        '23 May 1969', 
+        `<b>Side one</b>
+
+        <ol>
+
+        <li>"Overture" 3:50</li>
+
+        <li>"It's a Boy" 2:07</li>
+
+        <li>"1921" 3:14</li>
+
+        <li>"Amazing Journey" 4:30</li>
+
+        <li>"Sparks" 4:50</li>
+
+        </ol>
+
+        <b>Side two</b>
+
+        <ol>
+
+        <li>"Christmas" 4:39</li>
+
+        <li>"Cousin Kevin" 3:40</li>
+
+        <li>"The Acid Queen" 4:26</li>
+
+        <li>"Underture" 4:38</li>
+
+        <li>"The Hawker" 4:07 </li>
+
+        </ol>`, 
+        25.00, 
+        20
+    ),
+    productsToCreateHelper(
+        'Millennium',
+        'https://upload.wikimedia.org/wikipedia/en/f/f5/Millennium_cover.jpg', 
+        'Backstreet Boys', 
+        'Pop', 
+        'May 18, 1999', 
+        `<b>Side one</b>
+
+        <ol>
+
+        <li>"Larger than Life" 3:52</li>
+
+        <li>"I Want It That Way" 3:33</li>
+
+        <li>"Show Me the Meaning of Being Lonely" 3:54</li>
+
+        <li>"It's Gotta Be You" 2:57</li>
+
+        <li>"I Need You Tonight" 4:50</li>
+
+        </ol>
+
+        <b>Side two</b>
+
+        <ol>
+
+        <li>"Don't Want You Back" 3:26</li>
+
+        <li>"Don't Wanna Lose You Now" 3:40</li>
+
+        <li>"The One" 3:46</li>
+
+        <li>"Back to Your Heart" 4:38</li>
+
+        <li>"Spanish Eyes" 4:07 </li>
+
+        </ol>`, 
+        20.00, 
         20
     ),
 ]
