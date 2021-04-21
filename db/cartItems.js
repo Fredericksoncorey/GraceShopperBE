@@ -1,4 +1,5 @@
 const client = require('./client.js');
+const {getProductPricebyId} = require('./products')
 
 async function getCartItems({userId}) {
     try {
@@ -7,6 +8,14 @@ async function getCartItems({userId}) {
         FROM cart_items
         WHERE "cartId" = ${userId}
         `)
+
+        cartItems.map(item => {
+            console.log(item)
+        })
+        /* console.log(cartItems) 
+        const productIds = cartItems.map(item=>{return item.product})
+        const productIds.map(id=> )
+        console.log(productIds) */
     return cartItems
     } catch (error) {
     throw error;
@@ -43,7 +52,7 @@ async function deleteCartItem(id) {
 }
 
 async function updateQuantity(id, quantity) {
-    console.log(id, quantity)
+    /* console.log(id, quantity) */
     try {
         const { rows  } = await client.query(`
               UPDATE cart_items

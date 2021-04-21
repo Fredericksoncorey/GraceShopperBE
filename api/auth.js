@@ -2,7 +2,6 @@ const jwt  = require("jsonwebtoken")
 
 const authenticated = async (req, res, next) => {
    if(req.user){
-       console.log("GOT REQ.USER!!!")
        next()
    }else{
     next({ message: 'Please log in to continue' })

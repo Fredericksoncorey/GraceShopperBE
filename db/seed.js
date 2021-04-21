@@ -105,12 +105,22 @@ async function createInitialUsers() {
       const usersToCreate = [
         { username: 'albert', password: 'bertie99', email: 'albert@gmail.com', isAdmin: false },
         { username: 'sandra', password: 'sandra123', email: 'sandra@gmail.com', isAdmin: false},
+        { username: 'ManFromTheBlarg', password: 'wetPotatoe123', email: 'fredericksoncorey@yahoo.com', isAdmin: true},
         { username: 'glamgal', password: 'glamgal123', email: 'glamgal@gmail.com', isAdmin: true},
+        { username: 'imsocereal', password: 'Frootloops', email: 'Sugar@gmail.com', isAdmin: false},
+        { username: 'PepsiMan', password: 'trainwreck', email: 'PepsiMan@gmail.com', isAdmin: false},
+        { username: 'Gary', password: 'getinLoser', email: 'GarythheGreat@gmail.com', isAdmin: false},
+        { username: 'Mr.Bubbles', password: 'OfTheSubject', email: 'BubbleTea@gmail.com', isAdmin: true},
+        { username: 'Yugi Moto', password: 'HeartofTheCards', email: 'LittleKuribo@gmail.com', isAdmin: false},
+        { username: 'Micheal Pizza', password: 'Mispellings', email: 'PizzaTime@gmail.com', isAdmin: false},
+        { username: 'That Guy', password: 'WhatAJerk', email: 'H83R@yahoo.com', isAdmin: false},
+        { username: 'FreakOnALeash12', password: 'ILikeKorn', email: 'KornFan32@gmail.com', isAdmin: false},
+        
       ]
       const users = await Promise.all(usersToCreate.map(createUser));
   
-      console.log('Users created:');
-      console.log(users);
+/*       console.log('Users created:');
+      console.log(users); */
       console.log('Finished creating users!');
     } catch (error) {
       console.error('Error creating users!');
@@ -130,8 +140,8 @@ async function createInitialUsers() {
       ] */
       const products = await Promise.all(productsToCreate.map(createProduct));
   
-      console.log('products created:');
-      console.log(products);
+      /* console.log('products created:');
+      console.log(products); */
   
       console.log('Finished creating products!');
     } catch (error) {
@@ -152,8 +162,8 @@ async function createInitialOrders() {
     
       const orders = await Promise.all(ordersToCreate.map(createOrder));
   
-      console.log('orders created:');
-      console.log(orders);
+      /* console.log('orders created:');
+      console.log(orders); */
 
       console.log('Finished creating orders!');
     } catch (error) {
@@ -168,20 +178,25 @@ async function createInitialReviews() {
 
     const reviewsToCreate = [
         {userId: 1, productId: 1, rating: 5, review: "Best album ever!"},
-        {userId: 1, productId: 9, rating: 1, review: "It sucks"},
+        {userId: 11, productId: 9, rating: 1, review: "The absolute worse! I can't believe I spend money on this."},
         {userId: 3, productId: 2, rating: 3, review: "the second one is never as good as the first"},
-        {userId: 1, productId: 8, rating: 1, review: "It sucks"},
-        {userId: 2, productId: 2, rating: 3, review: "Best album ever!"},
-        {userId: 2, productId: 4, rating: 1, review: "It sucks"},
-        {userId: 3, productId: 5, rating: 5, review: "Best Album ever!"},
-        {userId: 1, productId: 6, rating: 1, review: "It sucks"},
-        {userId: 3, productId: 7, rating: 3, review: "the second one is never as good as the first"},
+        {userId: 8, productId: 8, rating: 5, review: "This truly is their Greatest Hits "},
+        {userId: 6, productId: 2, rating: 5, review: "I am Pepsi Man and I approve of this album"},
+        {userId: 10, productId: 4, rating: 1, review: "It sucks"},
+        {userId: 9, productId: 5, rating: 4, review: "It was pretty good, Not the best quality of music I've personally listened to, but still good."},
+        {userId: 2, productId: 6, rating: 2, review: "Wish I didn't purchase this one..."},
+        {userId: 3, productId: 1, rating: 4, review: "Loved this one"},
+        {userId: 12, productId: 1, rating: 5, review: "Sometimes it's my life I can taste"},
+        {userId: 7, productId: 3, rating: 2, review: "YUCK GET OUTTA HERE! GAAAARROOOOSSSS!"},
+        {userId: 5, productId: 2, rating: 5, review: "I put this one on eveyday!"},
+        {userId: 9, productId: 8, rating: 5, review: "How Did I Get Here!?"},
+        {userId: 2, productId: 2, rating: 4, review: "It was great."},
     ]
   
     const reviews = await Promise.all(reviewsToCreate.map(createReview));
 
-    console.log('reviews created:');
-    console.log(reviews);
+    /* console.log('reviews created:');
+    console.log(reviews); */
 
   }catch (error) {
     console.error('Error creating reviews!');
@@ -202,8 +217,8 @@ async function createInitialShoppingCart() {
 
     const carts = await Promise.all(usersToCreate.map(createShoppingCart));
 
-    console.log('carts created:');
-    console.log(carts);
+    /* console.log('carts created:');
+    console.log(carts); */
 
   }catch(error) {
     console.error('Error creating cart!');

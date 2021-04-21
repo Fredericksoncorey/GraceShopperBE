@@ -190,6 +190,21 @@ const makeGenreList = async () => {
 }
 }
 
+const getProductPricebyId = async (id) =>{
+  try {
+    const { rows: [price] } = await client.query(`
+    SELECT price 
+    FROM products
+    WHERE id=$1;
+    `, [id]);
+    if(!price){return Error({message:"Nothing was returned"})}
+    return price;
+  } catch (error) {
+      throw({message :error.message});
+  }
+
+}
+
 
     module.exports = {
         createProduct,
@@ -200,6 +215,7 @@ const makeGenreList = async () => {
         getAllProductsWithReviews,
         updateProduct,
         destroyProduct,
-        makeGenreList
+        makeGenreList,
+        getProductPricebyId
       }
 

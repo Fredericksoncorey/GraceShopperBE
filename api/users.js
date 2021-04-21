@@ -55,7 +55,7 @@ usersRouter.post('/register', async (req, res, next) => {
     } else {
       const user = await createUser({ username, password, email/* , isAdmin */ })
       delete user.password
-        const token = jwt.sign( user , "Secret Code"/* change later */, {
+        const token = jwt.sign( user , JWT_SECRET/* change later */, {
         expiresIn: 86400}) 
       res.send( {user: {id:user.id, username:user.username}, message: "Thank you for signing up!", token:token });
     }
@@ -85,7 +85,7 @@ usersRouter.post('/login', async (req, res, next) => {
         username: username,
         email: email,
         isAdmin: isAdmin
-      }, "Secret Code" /* process.env.JWT_SECRET */);
+      },JWT_SECRET /* process.env.JWT_SECRET */);
       res.send({user: {id: id, username:username}, message: `Welcome ${username}`, token:token });
     } else {
       next({
